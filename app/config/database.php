@@ -25,12 +25,25 @@ if (session_status() === PHP_SESSION_NONE) {
 // ------------------------------------------------------------------------------
 // 2. KREDENSIAL DAN KONEKSI DATABASE MYSQL
 // ------------------------------------------------------------------------------
-// Mendeteksi Environment Variables (Cloud Render/Aiven) atau fallback ke XAMPP Lokal
-$host = getenv('DB_HOST') ?: '127.0.0.1';
-$user = getenv('DB_USER') ?: 'root';
-$pass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
-$dbname = getenv('DB_NAME') ?: 'db_sim_adhoc';
-$port = getenv('DB_PORT') ?: 3306;
+// Deteksi otomatis: Jika di InfinityFree / Hosting Publik vs XAMPP Lokal
+$http_host = $_SERVER['HTTP_HOST'] ?? '';
+$is_hosting = !empty($http_host) && !in_array($http_host, ['localhost', '127.0.0.1']);
+
+if ($is_hosting) {
+    // Kredensial Database InfinityFree
+    $host = 'sql111.infinityfree.com';
+    $user = 'if0_43328345';
+    $pass = 'nWhjWIwVlz';
+    $dbname = 'if0_43328345_simadhoc';
+    $port = 3306;
+} else {
+    // Kredensial Database XAMPP Lokal
+    $host = getenv('DB_HOST') ?: '127.0.0.1';
+    $user = getenv('DB_USER') ?: 'root';
+    $pass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
+    $dbname = getenv('DB_NAME') ?: 'db_sim_adhoc';
+    $port = getenv('DB_PORT') ?: 3306;
+}
 
 try {
     // Membuat instance PDO baru dengan charset UTF-8
