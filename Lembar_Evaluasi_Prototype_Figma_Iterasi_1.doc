@@ -1,0 +1,412 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+    <meta charset="utf-8">
+    <title>Lembar Evaluasi Prototype Figma (Iterasi I)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>100</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+        @page Section1 {
+            size: 210mm 297mm;
+            margin: 15mm 15mm 15mm 15mm;
+            mso-header-margin: 10mm;
+            mso-footer-margin: 10mm;
+            mso-paper-source: 0;
+        }
+        div.Section1 {
+            page: Section1;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 9pt;
+            color: #000000;
+            line-height: 1.3;
+        }
+        .kop-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-bottom: 2.5pt solid #6b0c22;
+            margin-bottom: 12px;
+        }
+        .kop-table td {
+            border: none;
+            padding: 4px;
+            vertical-align: middle;
+        }
+        .kop-title {
+            text-align: center;
+        }
+        .kop-title h3 {
+            margin: 0;
+            font-size: 13pt;
+            color: #6b0c22;
+            font-weight: bold;
+        }
+        .kop-title h4 {
+            margin: 2px 0 0 0;
+            font-size: 10.5pt;
+            color: #000000;
+            font-weight: bold;
+        }
+        .kop-title p {
+            margin: 2px 0 0 0;
+            font-size: 8pt;
+            color: #475569;
+        }
+        .main-title {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .main-title h4 {
+            margin: 0;
+            font-size: 11pt;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .main-title small {
+            font-size: 8pt;
+            color: #64748b;
+        }
+        .meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff1f2;
+            border: 1pt solid #fecdd3;
+            margin-bottom: 12px;
+        }
+        .meta-table td {
+            border: none;
+            padding: 4px 8px;
+            font-size: 8.5pt;
+        }
+        .petunjuk-box {
+            background-color: #f0fdf4;
+            border-left: 3pt solid #16a34a;
+            padding: 6px 10px;
+            margin-bottom: 10px;
+            font-size: 8pt;
+            color: #14532d;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+            font-size: 8pt;
+        }
+        .data-table th, .data-table td {
+            border: 1pt solid #000000;
+            padding: 5px 6px;
+            vertical-align: top;
+        }
+        .data-table th {
+            background-color: #f1f5f9;
+            font-weight: bold;
+            text-align: left;
+        }
+        .badge {
+            font-weight: bold;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 7pt;
+        }
+        .badge-adm { background-color: #fee2e2; color: #991b1b; }
+        .badge-ket { background-color: #fef3c7; color: #92400e; }
+        .badge-ang { background-color: #e0e7ff; color: #3730a3; }
+        .notes-box {
+            height: 38px;
+            border: 0.5pt dashed #94a3b8;
+            background-color: #ffffff;
+        }
+        .sig-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+            font-size: 8.5pt;
+        }
+        .sig-table td {
+            border: none;
+            padding: 4px;
+            text-align: center;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="Section1">
+
+    <!-- KOP -->
+    <table class="kop-table">
+        <tr>
+            <td class="kop-title">
+                <h3>UNIVERSITAS KRISTEN DUTA WACANA</h3>
+                <h4>LEMBAGA PENGEMBANGAN AKADEMIK DAN INOVASI PEMBELAJARAN (LPAIP)</h4>
+                <p>Skripsi: Sistem Informasi Manajemen Tim Ad Hoc Berbasis Web (Goal-Directed Design & Evolutionary Prototyping)</p>
+            </td>
+        </tr>
+    </table>
+
+    <!-- JUDUL -->
+    <div class="main-title">
+        <h4>LEMBAR PENCATATAN EVALUASI PROTOTYPE FIGMA (ITERASI I)</h4>
+        <small>Dokumen Lampiran Sub-bab 3.4.5 Refinement — Peneliti: Rizky Chrales Christiaan (NIM: 71220902)</small>
+    </div>
+
+    <!-- DATA RESPONDEN -->
+    <table class="meta-table">
+        <tr>
+            <td style="width: 15%; font-weight: bold;">Nama Responden</td>
+            <td style="width: 35%;">: ................................................................</td>
+            <td style="width: 18%; font-weight: bold;">Tanggal Pengujian</td>
+            <td style="width: 32%;">: ....................................................</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">NIP / NIM</td>
+            <td>: ................................................................</td>
+            <td style="font-weight: bold;">Peran Pengguna (Role)</td>
+            <td>: [ &nbsp; ] Admin LPAIP &nbsp; [ &nbsp; ] Ketua &nbsp; [ &nbsp; ] Anggota</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Jabatan / Unit Kerja</td>
+            <td>: ................................................................</td>
+            <td style="font-weight: bold;">Waktu Pengujian</td>
+            <td>: ............ s.d. ............ WIB</td>
+        </tr>
+    </table>
+
+    <!-- PETUNJUK -->
+    <div class="petunjuk-box">
+        <strong>Petunjuk Penguji (Peneliti):</strong>
+        1. Bacakan kalimat instruksi tugas secara langsung kepada responden tanpa mengarahkan langkah tombol.<br>
+        2. Amati responden saat mencoba prototype Figma.<br>
+        3. Beri tanda centang [✓] pada status: <em>Berhasil tanpa bantuan</em>, <em>Berhasil dengan bantuan</em>, atau <em>Belum berhasil</em>.<br>
+        4. Catat kendala yang dialami responden serta komentar dan umpan baliknya.
+    </div>
+
+    <!-- TABEL 3.9 EVALUASI -->
+    <h4 style="margin: 8px 0 4px 0; font-size: 9.5pt; color: #6b0c22;">Tabel 3.9 Pencatatan Evaluasi Prototype Figma</h4>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 5%; text-align: center;">No</th>
+                <th style="width: 13%;">Kode & Peran</th>
+                <th style="width: 34%;">Instruksi Skenario Tugas (Dibacakan ke Pengguna)</th>
+                <th style="width: 18%;">Status Penyelesaian (Beri Centang ✓)</th>
+                <th style="width: 15%;">Kendala yang Ditemukan (Observasi)</th>
+                <th style="width: 15%;">Umpan Balik Pengguna (Masukan Langsung)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ADMIN -->
+            <tr>
+                <td style="text-align: center; font-weight: bold;">1</td>
+                <td><strong>F-ADM-01</strong><br><span class="badge badge-adm">Admin LPAIP</span></td>
+                <td>
+                    <strong>"Anda login sebagai Admin LPAIP. Silakan buka menu daftar tim untuk melihat seluruh Tim Ad Hoc yang sedang aktif."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menemukan menu Kelola Tim Ad Hoc melalui navigasi.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-weight: bold;">2</td>
+                <td><strong>F-ADM-02</strong><br><span class="badge badge-adm">Admin LPAIP</span></td>
+                <td>
+                    <strong>"LPAIP akan membentuk tim baru. Silakan klik tombol untuk membuat Tim Ad Hoc baru dan tunjukkan di mana mengisi data tim."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menemukan tombol 'Tambah Tim' dan form pembentukan tim.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-weight: bold;">3</td>
+                <td><strong>F-ADM-03</strong><br><span class="badge badge-adm">Admin LPAIP</span></td>
+                <td>
+                    <strong>"SK Rektorat telah terbit. Silakan buka salah satu tim, lalu masukkan 1 nama dosen ke dalam susunan personil tim tersebut."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menuju Tab 2 (Personil) dan membuka modal '+ Tambah Personil Anggota'.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-weight: bold;">4</td>
+                <td><strong>F-ADM-04</strong><br><span class="badge badge-adm">Admin LPAIP</span></td>
+                <td>
+                    <strong>"Silakan cari tombol untuk mengunduh draf Surat Permohonan SK (.doc) atau melihat berkas PDF SK Resmi tim."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menemukan tombol 'Unduh Permohonan SK' atau Tab 1 Surat SK.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+
+            <!-- KETUA -->
+            <tr>
+                <td style="text-align: center; font-weight: bold;">5</td>
+                <td><strong>F-KET-01</strong><br><span class="badge badge-ket">Ketua Tim</span></td>
+                <td>
+                    <strong>"Di Dashboard, temukan tim di mana Anda bertindak sebagai Ketua, lalu klik untuk masuk ke ruang kerja tim tersebut."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menemukan tim di dashboard dan membuka ruang kerja tim.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-weight: bold;">6</td>
+                <td><strong>F-KET-02</strong><br><span class="badge badge-ket">Ketua Tim</span></td>
+                <td>
+                    <strong>"Di dalam ruang kerja tim (Tab Penugasan), buatlah 1 tugas baru untuk anggota lengkap dengan batas waktunya (deadline)."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menuju Tab 3, klik form penugasan, memilih PIC dan deadline.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-weight: bold;">7</td>
+                <td><strong>F-KET-03</strong><br><span class="badge badge-ket">Ketua Tim</span></td>
+                <td>
+                    <strong>"Tunjukkan di mana Anda bisa melihat apakah tugas anggota sudah selesai atau belum, serta persentase progres capaian tim (%)."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menemukan bilah progress capaian tim (%) dan status centang tugas.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+
+            <!-- ANGGOTA -->
+            <tr>
+                <td style="text-align: center; font-weight: bold;">8</td>
+                <td><strong>F-ANG-01</strong><br><span class="badge badge-ang">Anggota Tim</span></td>
+                <td>
+                    <strong>"Masuk ke tim Anda, buka Tab Penugasan Kerja, lalu temukan tugas yang diberikan khusus atas nama Anda."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Membuka Tab 3 dan mengidentifikasi baris tugas sesuai nama sendiri.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-weight: bold;">9</td>
+                <td><strong>F-ANG-02</strong><br><span class="badge badge-ang">Anggota Tim</span></td>
+                <td>
+                    <strong>"Pekerjaan tugas Anda selesai. Silakan klik tombol untuk mengunggah file bukti tugas agar statusnya berubah Selesai."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menemukan tombol 'Kirim Hasil Tugas' dan form upload bukti kerja.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-weight: bold;">10</td>
+                <td><strong>F-ANG-03</strong><br><span class="badge badge-ang">Anggota Tim</span></td>
+                <td>
+                    <strong>"Buka Tab Repositori & LPJ, lalu cari di mana Anda bisa mengunduh berkas LPJ atau dokumen pendukung tim."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menuju Tab 4 dan menemukan tombol unduh berkas LPJ / dokumen.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-weight: bold;">11</td>
+                <td><strong>F-ANG-04</strong><br><span class="badge badge-ang">Anggota Tim</span></td>
+                <td>
+                    <strong>"Tunjukkan di mana Anda bisa melihat tanggal deadline tugas Anda dan di mana letak lonceng notifikasinya."</strong><br>
+                    <span style="color:#64748b; font-size:7pt;">Target: Menemukan kolom tanggal deadline dan ikon lonceng notifikasi.</span>
+                </td>
+                <td>
+                    [ &nbsp; ] Berhasil tanpa bantuan<br>
+                    [ &nbsp; ] Berhasil dengan bantuan<br>
+                    [ &nbsp; ] Belum berhasil
+                </td>
+                <td><div class="notes-box"></div></td>
+                <td><div class="notes-box"></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- PERTANYAAN WAWANCARA KUALITATIF -->
+    <h4 style="margin: 8px 0 4px 0; font-size: 9.5pt; color: #6b0c22;">Umpan Balik Kualitatif Pengguna (Wawancara Penutup)</h4>
+    <div style="font-size: 8.5pt;">
+        <p style="margin: 0 0 2px 0;"><strong>1. Kendala Navigasi & Alur:</strong> <em>"Saat mencoba tadi, adakah tombol atau menu yang posisinya membingungkan atau sempat sulit dicari? Jika ada, di bagian mana?"</em></p>
+        <div class="notes-box" style="margin-bottom: 6px;"></div>
+
+        <p style="margin: 0 0 2px 0;"><strong>2. Kejelasan Bahasa & Label Tombol:</strong> <em>"Apakah istilah pada tombol dan formulir (seperti 'Kirim Hasil Tugas', 'Permohonan SK', 'LPJ') sudah langsung dipahami, atau ada istilah yang janggal?"</em></p>
+        <div class="notes-box" style="margin-bottom: 6px;"></div>
+
+        <p style="margin: 0 0 2px 0;"><strong>3. Keterbacaan Visual:</strong> <em>"Bagaimana dengan warna merah maroon UKDW dan ukuran teksnya? Apakah ada tulisan yang terasa kekecilan atau warnanya kurang kontras?"</em></p>
+        <div class="notes-box" style="margin-bottom: 6px;"></div>
+
+        <p style="margin: 0 0 2px 0;"><strong>4. Alur Kerja Tim Ad Hoc:</strong> <em>"Menurut pengalaman Anda dalam kepanitiaan di UKDW, apakah pembagian 4 Tab (SK, Personil, Tugas, LPJ) sudah pas, atau ada alur penting yang terlewat?"</em></p>
+        <div class="notes-box"></div>
+    </div>
+
+    <!-- TANDA TANGAN -->
+    <table class="sig-table">
+        <tr>
+            <td>
+                Responden Pengujian,<br><br><br><br>
+                ( ............................................................ )
+            </td>
+            <td>
+                Yogyakarta, ............................. 2026<br>
+                Peneliti Mahasiswa,<br><br><br><br>
+                <strong>Rizky Chrales Christiaan</strong><br>
+                NIM: 71220902
+            </td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

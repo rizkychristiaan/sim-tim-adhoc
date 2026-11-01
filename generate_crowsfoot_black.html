@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background-color: #000000; padding: 30px; display: flex; justify-content: center; }
+  .diagram-container {
+    width: 1050px; height: 1420px; background: #000000; border: 1.5px solid #222222;
+    position: relative;
+  }
+
+  .diagram-header {
+    text-align: center; padding: 25px 0 10px 0; color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  .diagram-header h2 { font-size: 19px; font-weight: 700; color: #ffffff; letter-spacing: 0.8px; }
+  .diagram-header p { font-size: 13px; color: #a1a1aa; margin-top: 4px; }
+
+  /* Table Cards - Black & Deep Blue Theme */
+  .table-card {
+    position: absolute; border: 1.5px solid #1e3a5f;
+    background: #090e17; width: 280px; z-index: 10;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  .table-header {
+    background: #0d1f38; color: #ffffff; font-weight: 700; font-size: 13.5px;
+    text-align: center; padding: 7px 0; letter-spacing: 0.8px; border-bottom: 1.5px solid #1e3a5f;
+  }
+  table.tbl-fields {
+    width: 100%; border-collapse: collapse; font-size: 11.5px;
+  }
+  table.tbl-fields tr { border-bottom: 1px solid #132238; }
+  table.tbl-fields tr:last-child { border-bottom: none; }
+  table.tbl-fields tr:nth-child(even) { background: #090e17; }
+  table.tbl-fields tr:nth-child(odd) { background: #132033; }
+  
+  table.tbl-fields td { padding: 4.5px 8px; color: #cbd5e1; }
+  .td-type { width: 55px; color: #93c5fd; font-family: 'Consolas', monospace; font-size: 11px; }
+  .td-name { font-weight: 600; color: #f8fafc; }
+  .td-key { width: 35px; text-align: center; font-weight: 700; font-size: 10.5px; }
+  .badge-pk { background: #1e3a5f; color: #93c5fd; padding: 1px 4px; border-radius: 2px; }
+  .badge-fk { background: #1e293b; color: #64748b; padding: 1px 4px; border-radius: 2px; }
+
+  /* SVG Canvas */
+  svg.crow-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+  .crow-line { stroke: #ffffff; stroke-width: 1.4; fill: none; }
+  .rel-text { font-size: 11.5px; font-weight: 500; fill: #e2e8f0; text-anchor: middle; }
+</style>
+</head>
+<body>
+
+<div class="diagram-container">
+  <div class="diagram-header">
+    <h2>RELATIONAL DATABASE DIAGRAM (CROW'S FOOT NOTATION)</h2>
+    <p>Sistem Informasi Manajemen Tim Ad Hoc — LPAIP UKDW</p>
+  </div>
+
+  <svg class="crow-canvas">
+    <defs>
+      <!-- One marker (two parallel bars) -->
+      <marker id="one-start" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+        <line x1="4" y1="1" x2="4" y2="11" stroke="#ffffff" stroke-width="1.6" />
+        <line x1="8" y1="1" x2="8" y2="11" stroke="#ffffff" stroke-width="1.6" />
+      </marker>
+      <!-- Many marker (crow's foot + circle like in user's image) -->
+      <marker id="many-end" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="11" markerHeight="11" orient="auto">
+        <line x1="2" y1="8" x2="14" y2="1" stroke="#ffffff" stroke-width="1.6" />
+        <line x1="2" y1="8" x2="14" y2="8" stroke="#ffffff" stroke-width="1.6" />
+        <line x1="2" y1="8" x2="14" y2="15" stroke="#ffffff" stroke-width="1.6" />
+        <circle cx="5" cy="8" r="2.5" fill="#000000" stroke="#ffffff" stroke-width="1.4" />
+      </marker>
+    </defs>
+
+    <!-- 1. USERS to TIM_ADHOC (membuat) -->
+    <path d="M 525 340 L 525 390" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="525" y="372" class="rel-text">membuat</text>
+
+    <!-- 2. USERS to ANGGOTA_TIM (terdaftar) -->
+    <path d="M 430 340 L 430 365 L 70 365 L 70 600 L 140 600" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="50" y="475" class="rel-text">terdaftar</text>
+
+    <!-- 3. TIM_ADHOC to ANGGOTA_TIM (memiliki) -->
+    <path d="M 440 655 L 440 690 L 220 690 L 220 730" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="250" y="705" class="rel-text">memiliki</text>
+
+    <!-- 4. TIM_ADHOC to TUGAS (memiliki) -->
+    <path d="M 525 655 L 525 730" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="525" y="700" class="rel-text">memiliki</text>
+
+    <!-- 5. TIM_ADHOC to DOKUMEN (memiliki) -->
+    <path d="M 610 655 L 610 690 L 830 690 L 830 730" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="800" y="705" class="rel-text">memiliki</text>
+
+    <!-- 6. USERS to TUGAS (PIC tugas) -->
+    <path d="M 570 340 L 570 370 L 675 370 L 675 700 L 590 700 L 590 730" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="690" y="535" class="rel-text">PIC</text>
+
+    <!-- 7. USERS to DOKUMEN (mengunggah) -->
+    <path d="M 610 340 L 610 355 L 890 355 L 890 730" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="930" y="535" class="rel-text">mengunggah</text>
+
+    <!-- 8. USERS to NOTIFIKASI (menerima) -->
+    <path d="M 650 340 L 650 345 L 990 345 L 990 1120 L 820 1120 L 820 1140" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="960" y="900" class="rel-text">menerima</text>
+
+    <!-- 9. TUGAS to TUGAS_FILES (memiliki lampiran) -->
+    <path d="M 450 1050 L 450 1140" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="450" y="1105" class="rel-text">memiliki</text>
+
+    <!-- 10. USERS to TUGAS_FILES (uploader) -->
+    <path d="M 395 340 L 395 350 L 30 350 L 30 1195 L 305 1195" class="crow-line" marker-start="url(#one-start)" marker-end="url(#many-end)" />
+    <text x="50" y="930" class="rel-text">uploader</text>
+  </svg>
+
+  <!-- ================= TIER 1: USERS ================= -->
+  <div class="table-card" style="top: 90px; left: 385px;">
+    <div class="table-header">USERS</div>
+    <table class="tbl-fields">
+      <tr><td class="td-type">int</td><td class="td-name">id</td><td class="td-key"><span class="badge-pk">PK</span></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">nip_nim</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">nama</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">email</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">password</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">status</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">role</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">jabatan_struktural</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">datetime</td><td class="td-name">created_at</td><td class="td-key"></td></tr>
+    </table>
+  </div>
+
+  <!-- ================= TIER 2: TIM_ADHOC ================= -->
+  <div class="table-card" style="top: 390px; left: 385px;">
+    <div class="table-header">TIM_ADHOC</div>
+    <table class="tbl-fields">
+      <tr><td class="td-type">int</td><td class="td-name">id</td><td class="td-key"><span class="badge-pk">PK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">created_by</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">nomor_sk</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">nama_tim</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">deskripsi</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">date</td><td class="td-name">tanggal_mulai</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">date</td><td class="td-name">tanggal_selesai</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">status</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">datetime</td><td class="td-name">created_at</td><td class="td-key"></td></tr>
+    </table>
+  </div>
+
+  <!-- ================= TIER 3: ANGGOTA_TIM, TUGAS, DOKUMEN ================= -->
+  <!-- ANGGOTA_TIM -->
+  <div class="table-card" style="top: 730px; left: 80px;">
+    <div class="table-header">ANGGOTA_TIM</div>
+    <table class="tbl-fields">
+      <tr><td class="td-type">int</td><td class="td-name">id</td><td class="td-key"><span class="badge-pk">PK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">tim_id</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">user_id</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">peran_tim</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">datetime</td><td class="td-name">tgl_bergabung</td><td class="td-key"></td></tr>
+    </table>
+  </div>
+
+  <!-- TUGAS -->
+  <div class="table-card" style="top: 730px; left: 385px;">
+    <div class="table-header">TUGAS</div>
+    <table class="tbl-fields">
+      <tr><td class="td-type">int</td><td class="td-name">id</td><td class="td-key"><span class="badge-pk">PK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">tim_id</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">assigned_to</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">judul_tugas</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">deskripsi_tugas</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">prioritas</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">status</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">date</td><td class="td-name">deadline</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">datetime</td><td class="td-name">created_at</td><td class="td-key"></td></tr>
+    </table>
+  </div>
+
+  <!-- DOKUMEN -->
+  <div class="table-card" style="top: 730px; left: 690px;">
+    <div class="table-header">DOKUMEN</div>
+    <table class="tbl-fields">
+      <tr><td class="td-type">int</td><td class="td-name">id</td><td class="td-key"><span class="badge-pk">PK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">tim_id</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">uploader_id</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">nama_dokumen</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">jenis_dokumen</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">file_path</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">datetime</td><td class="td-name">uploaded_at</td><td class="td-key"></td></tr>
+    </table>
+  </div>
+
+  <!-- ================= TIER 4: TUGAS_FILES & NOTIFIKASI ================= -->
+  <!-- TUGAS_FILES -->
+  <div class="table-card" style="top: 1140px; left: 305px;">
+    <div class="table-header">TUGAS_FILES</div>
+    <table class="tbl-fields">
+      <tr><td class="td-type">int</td><td class="td-name">id</td><td class="td-key"><span class="badge-pk">PK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">tugas_id</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">uploader_id</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">nama_file_asli</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">file_path</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">file_size</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">datetime</td><td class="td-name">uploaded_at</td><td class="td-key"></td></tr>
+    </table>
+  </div>
+
+  <!-- NOTIFIKASI -->
+  <div class="table-card" style="top: 1140px; left: 660px;">
+    <div class="table-header">NOTIFIKASI</div>
+    <table class="tbl-fields">
+      <tr><td class="td-type">int</td><td class="td-name">id</td><td class="td-key"><span class="badge-pk">PK</span></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">user_id</td><td class="td-key"><span class="badge-fk">FK</span></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">judul</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">string</td><td class="td-name">pesan</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">is_read</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">int</td><td class="td-name">email_sent</td><td class="td-key"></td></tr>
+      <tr><td class="td-type">datetime</td><td class="td-name">created_at</td><td class="td-key"></td></tr>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

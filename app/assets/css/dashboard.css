@@ -1,0 +1,99 @@
+/**
+ * ==============================================================================
+ * FILE: app/assets/css/dashboard.css
+ * HALAMAN: Dashboard Utama e-Class Tim Ad Hoc
+ * ==============================================================================
+ */
+
+/* Reset main-content margin-left karena sidebar tidak dimuat di dashboard */
+.main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    background-color: #f8fafc;
+    min-height: 100vh;
+}
+
+/* Top Bar Styling ala e-Class UKDW */
+.eclass-topbar {
+    background-color: #6b0c22; /* Warna khas maroon UKDW e-Class */
+    color: #ffffff;
+    padding: 8px 24px;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.eclass-topbar .brand {
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+.eclass-topbar .user-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.eclass-topbar a.logout-btn {
+    color: #fecdd3;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.eclass-topbar a.logout-btn:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Sub-header e-Class */
+.eclass-subnav {
+    background: #ffffff;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 12px 24px;
+}
+
+/* Gaya Kartu Kelas/Tim */
+.eclass-team-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.eclass-team-card .team-item {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-left: 10px solid #6b0c22 !important;
+    border-radius: 8px;
+    padding: 26px 34px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+.eclass-team-card:hover .team-item {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.eclass-team-card:hover .team-title {
+    color: #1e3a8a !important;
+}
+.team-title {
+    color: #6b0c22;
+    font-weight: 700;
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+}
+
+.team-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 12px;
+}
+
+.team-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+.progress-thin {
+    height: 8px;
+    border-radius: 6px;
+}

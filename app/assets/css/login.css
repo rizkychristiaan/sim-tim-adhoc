@@ -1,0 +1,60 @@
+/**
+ * ==============================================================================
+ * FILE: app/assets/css/login.css
+ * HALAMAN: Autentikasi Login Pengguna
+ * ==============================================================================
+ */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #3d0712 0%, #260309 60%, #150205 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 100%;
+    max-width: 440px;
+    border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+.login-header {
+    background: linear-gradient(180deg, #6b0c22 0%, #540919 100%);
+    color: #ffffff;
+    padding: 2rem 2rem 1.6rem 2rem;
+    text-align: center;
+    border-bottom: 3px solid #d97706;
+}
+
+.btn-login {
+    background-color: #6b0c22 !important;
+    border-color: #6b0c22 !important;
+    padding: 0.75rem;
+    font-weight: 600;
+    border-radius: 8px;
+    color: #ffffff !important;
+    transition: all 0.2s;
+}
+
+.btn-login:hover {
+    background-color: #83102b !important;
+    border-color: #83102b !important;
+    box-shadow: 0 4px 12px rgba(107, 12, 34, 0.35);
+}
+
+.demo-badge {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.demo-badge:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
+}

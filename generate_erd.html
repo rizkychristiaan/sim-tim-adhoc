@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+  body { background-color: #fff; padding: 20px; display: flex; justify-content: center; }
+  .erd-container { width: 1300px; height: 960px; background: #ffffff; border: 1.5px solid #222; position: relative; border-radius: 6px; }
+  .erd-title { position: absolute; bottom: 18px; width: 100%; text-align: center; }
+  .erd-title h3 { font-size: 18.5px; font-weight: 700; color: #111; }
+  .erd-title p { font-size: 14px; font-style: italic; color: #444; margin-top: 4px; }
+
+  /* Entities (Rectangles) */
+  .entity {
+    position: absolute; border: 2px solid #0f172a; background: #ffffff;
+    font-weight: 700; font-size: 14.5px; text-align: center; color: #0f172a;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 3px; z-index: 10; letter-spacing: 0.5px;
+  }
+
+  /* Relationships (Diamonds) */
+  .relationship {
+    position: absolute; z-index: 10;
+    width: 108px; height: 60px;
+    background: #ffffff; border: 1.8px solid #0f172a;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .rel-text { font-size: 11px; font-weight: 700; color: #0f172a; padding: 0 10px; line-height: 1.15; }
+
+  /* Attributes (Ellipses) */
+  .attr {
+    position: absolute; border: 1.3px solid #334155; background: #ffffff;
+    border-radius: 50%; font-size: 11px; font-weight: 600; color: #1e293b;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 2px 6px; z-index: 10;
+  }
+  .attr-pk { text-decoration: underline; font-weight: 700; }
+
+  /* SVG Canvas for Lines */
+  svg.canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+  .card-label { font-size: 13.5px; font-weight: 700; fill: #0f172a; }
+</style>
+</head>
+<body>
+
+<div class="erd-container">
+  <svg class="canvas">
+    <!-- 1. USERS to TIM_ADHOC (Membuat) -->
+    <line x1="240" y1="210" x2="350" y2="210" stroke="#0f172a" stroke-width="1.8" />
+    <line x1="458" y1="210" x2="570" y2="210" stroke="#0f172a" stroke-width="1.8" />
+    <text x="255" y="202" class="card-label">1</text>
+    <text x="550" y="202" class="card-label">N</text>
+
+    <!-- 2. TIM_ADHOC to ANGGOTA_TIM (Memiliki) -->
+    <line x1="710" y1="210" x2="800" y2="210" stroke="#0f172a" stroke-width="1.8" />
+    <line x1="908" y1="210" x2="1000" y2="210" stroke="#0f172a" stroke-width="1.8" />
+    <text x="725" y="202" class="card-label">1</text>
+    <text x="980" y="202" class="card-label">N</text>
+
+    <!-- 3. USERS to ANGGOTA_TIM (Terdaftar Di) -->
+    <path d="M 175 185 L 175 90 L 590 90" fill="none" stroke="#0f172a" stroke-width="1.8" />
+    <path d="M 698 90 L 1070 90 L 1070 185" fill="none" stroke="#0f172a" stroke-width="1.8" />
+    <text x="185" y="115" class="card-label">1</text>
+    <text x="1055" y="115" class="card-label">N</text>
+
+    <!-- 4. TIM_ADHOC to TUGAS (Memiliki) -->
+    <line x1="640" y1="235" x2="640" y2="330" stroke="#0f172a" stroke-width="1.8" />
+    <line x1="640" y1="390" x2="640" y2="500" stroke="#0f172a" stroke-width="1.8" />
+    <text x="650" y="260" class="card-label">1</text>
+    <text x="650" y="485" class="card-label">N</text>
+
+    <!-- 5. USERS to TUGAS (Menerima Tugas) -->
+    <path d="M 175 235 L 175 525 L 290 525" fill="none" stroke="#0f172a" stroke-width="1.8" />
+    <line x1="398" y1="525" x2="570" y2="525" stroke="#0f172a" stroke-width="1.8" />
+    <text x="185" y="265" class="card-label">1</text>
+    <text x="550" y="518" class="card-label">N</text>
+
+    <!-- 6. TUGAS to TUGAS_FILES (Memiliki Lampiran) -->
+    <line x1="710" y1="525" x2="800" y2="525" stroke="#0f172a" stroke-width="1.8" />
+    <line x1="908" y1="525" x2="1000" y2="525" stroke="#0f172a" stroke-width="1.8" />
+    <text x="725" y="518" class="card-label">1</text>
+    <text x="980" y="518" class="card-label">N</text>
+
+    <!-- 7. USERS to DOKUMEN (Mengunggah Dokumen) -->
+    <line x1="175" y1="235" x2="175" y2="400" stroke="#0f172a" stroke-width="1.8" />
+    <line x1="175" y1="460" x2="175" y2="705" stroke="#0f172a" stroke-width="1.8" />
+    <text x="185" y="275" class="card-label">1</text>
+    <text x="185" y="695" class="card-label">N</text>
+
+    <!-- 8. USERS to NOTIFIKASI (Menerima Notifikasi) -->
+    <path d="M 210 235 L 210 730 L 330 730" fill="none" stroke="#0f172a" stroke-width="1.8" />
+    <line x1="438" y1="730" x2="570" y2="730" stroke="#0f172a" stroke-width="1.8" />
+    <text x="220" y="265" class="card-label">1</text>
+    <text x="550" y="722" class="card-label">N</text>
+
+    <!-- ATTRIBUTES LINES -->
+    <!-- USERS -->
+    <line x1="110" y1="190" x2="65" y2="135" stroke="#64748b" stroke-width="1.2" />
+    <line x1="110" y1="195" x2="60" y2="168" stroke="#64748b" stroke-width="1.2" />
+    <line x1="110" y1="200" x2="55" y2="200" stroke="#64748b" stroke-width="1.2" />
+    <line x1="110" y1="205" x2="58" y2="235" stroke="#64748b" stroke-width="1.2" />
+    <line x1="110" y1="210" x2="58" y2="270" stroke="#64748b" stroke-width="1.2" />
+    <line x1="110" y1="215" x2="60" y2="305" stroke="#64748b" stroke-width="1.2" />
+    <line x1="110" y1="220" x2="60" y2="340" stroke="#64748b" stroke-width="1.2" />
+    <line x1="125" y1="235" x2="65" y2="375" stroke="#64748b" stroke-width="1.2" />
+    <line x1="145" y1="235" x2="95" y2="410" stroke="#64748b" stroke-width="1.2" />
+
+    <!-- TIM_ADHOC -->
+    <line x1="590" y1="185" x2="535" y2="130" stroke="#64748b" stroke-width="1.2" />
+    <line x1="610" y1="185" x2="580" y2="125" stroke="#64748b" stroke-width="1.2" />
+    <line x1="640" y1="185" x2="640" y2="120" stroke="#64748b" stroke-width="1.2" />
+    <line x1="670" y1="185" x2="695" y2="125" stroke="#64748b" stroke-width="1.2" />
+    <line x1="695" y1="185" x2="745" y2="130" stroke="#64748b" stroke-width="1.2" />
+    <line x1="710" y1="195" x2="765" y2="165" stroke="#64748b" stroke-width="1.2" />
+    <line x1="710" y1="225" x2="765" y2="255" stroke="#64748b" stroke-width="1.2" />
+    <line x1="695" y1="235" x2="745" y2="290" stroke="#64748b" stroke-width="1.2" />
+
+    <!-- ANGGOTA_TIM -->
+    <line x1="1025" y1="185" x2="985" y2="135" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1060" y1="185" x2="1055" y2="135" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1140" y1="195" x2="1190" y2="170" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1140" y1="210" x2="1195" y2="210" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1140" y1="225" x2="1190" y2="250" stroke="#64748b" stroke-width="1.2" />
+
+    <!-- TUGAS -->
+    <line x1="570" y1="505" x2="495" y2="475" stroke="#64748b" stroke-width="1.2" />
+    <line x1="570" y1="520" x2="490" y2="510" stroke="#64748b" stroke-width="1.2" />
+    <line x1="570" y1="535" x2="485" y2="545" stroke="#64748b" stroke-width="1.2" />
+    <line x1="570" y1="550" x2="490" y2="580" stroke="#64748b" stroke-width="1.2" />
+    <line x1="710" y1="505" x2="765" y2="465" stroke="#64748b" stroke-width="1.2" />
+    <line x1="710" y1="520" x2="770" y2="500" stroke="#64748b" stroke-width="1.2" />
+    <line x1="710" y1="535" x2="770" y2="535" stroke="#64748b" stroke-width="1.2" />
+    <line x1="710" y1="550" x2="765" y2="570" stroke="#64748b" stroke-width="1.2" />
+    <line x1="685" y1="550" x2="730" y2="605" stroke="#64748b" stroke-width="1.2" />
+
+    <!-- TUGAS_FILES -->
+    <line x1="1070" y1="500" x2="1070" y2="445" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1140" y1="505" x2="1195" y2="465" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1140" y1="520" x2="1200" y2="500" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1140" y1="535" x2="1200" y2="535" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1140" y1="550" x2="1195" y2="570" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1100" y1="550" x2="1140" y2="605" stroke="#64748b" stroke-width="1.2" />
+    <line x1="1050" y1="550" x2="1050" y2="605" stroke="#64748b" stroke-width="1.2" />
+
+    <!-- DOKUMEN -->
+    <line x1="105" y1="715" x2="50" y2="665" stroke="#64748b" stroke-width="1.2" />
+    <line x1="105" y1="730" x2="45" y2="705" stroke="#64748b" stroke-width="1.2" />
+    <line x1="105" y1="745" x2="45" y2="745" stroke="#64748b" stroke-width="1.2" />
+    <line x1="105" y1="755" x2="50" y2="785" stroke="#64748b" stroke-width="1.2" />
+    <line x1="135" y1="755" x2="115" y2="815" stroke="#64748b" stroke-width="1.2" />
+    <line x1="175" y1="755" x2="185" y2="820" stroke="#64748b" stroke-width="1.2" />
+    <line x1="215" y1="755" x2="250" y2="815" stroke="#64748b" stroke-width="1.2" />
+
+    <!-- NOTIFIKASI -->
+    <line x1="640" y1="755" x2="560" y2="810" stroke="#64748b" stroke-width="1.2" />
+    <line x1="640" y1="755" x2="610" y2="815" stroke="#64748b" stroke-width="1.2" />
+    <line x1="640" y1="755" x2="665" y2="815" stroke="#64748b" stroke-width="1.2" />
+    <line x1="690" y1="755" x2="725" y2="810" stroke="#64748b" stroke-width="1.2" />
+    <line x1="710" y1="745" x2="785" y2="785" stroke="#64748b" stroke-width="1.2" />
+    <line x1="710" y1="730" x2="790" y2="745" stroke="#64748b" stroke-width="1.2" />
+    <line x1="710" y1="715" x2="785" y2="705" stroke="#64748b" stroke-width="1.2" />
+  </svg>
+
+  <!-- ================= ENTITIES ================= -->
+  <!-- 1. USERS -->
+  <div class="entity" style="top: 185px; left: 110px; width: 130px; height: 50px;">USERS</div>
+
+  <!-- 2. TIM_ADHOC -->
+  <div class="entity" style="top: 185px; left: 570px; width: 140px; height: 50px;">TIM_ADHOC</div>
+
+  <!-- 3. ANGGOTA_TIM -->
+  <div class="entity" style="top: 185px; left: 1000px; width: 140px; height: 50px;">ANGGOTA_TIM</div>
+
+  <!-- 4. TUGAS -->
+  <div class="entity" style="top: 500px; left: 570px; width: 140px; height: 50px;">TUGAS</div>
+
+  <!-- 5. TUGAS_FILES -->
+  <div class="entity" style="top: 500px; left: 1000px; width: 140px; height: 50px;">TUGAS_FILES</div>
+
+  <!-- 6. DOKUMEN -->
+  <div class="entity" style="top: 705px; left: 105px; width: 140px; height: 50px;">DOKUMEN</div>
+
+  <!-- 7. NOTIFIKASI -->
+  <div class="entity" style="top: 705px; left: 570px; width: 140px; height: 50px;">NOTIFIKASI</div>
+
+  <!-- ================= RELATIONSHIPS ================= -->
+  <!-- USERS - TIM_ADHOC: Membuat -->
+  <div class="relationship" style="top: 180px; left: 350px;">
+    <div class="rel-text">Membuat</div>
+  </div>
+
+  <!-- TIM_ADHOC - ANGGOTA_TIM: Memiliki -->
+  <div class="relationship" style="top: 180px; left: 800px;">
+    <div class="rel-text">Memiliki</div>
+  </div>
+
+  <!-- USERS - ANGGOTA_TIM: Terdaftar Di -->
+  <div class="relationship" style="top: 60px; left: 590px;">
+    <div class="rel-text">Terdaftar Di</div>
+  </div>
+
+  <!-- TIM_ADHOC - TUGAS: Memiliki -->
+  <div class="relationship" style="top: 330px; left: 586px;">
+    <div class="rel-text">Memiliki</div>
+  </div>
+
+  <!-- USERS - TUGAS: Menerima Tugas -->
+  <div class="relationship" style="top: 495px; left: 290px;">
+    <div class="rel-text">Menerima<br>Tugas</div>
+  </div>
+
+  <!-- TUGAS - TUGAS_FILES: Memiliki Lampiran -->
+  <div class="relationship" style="top: 495px; left: 800px;">
+    <div class="rel-text">Memiliki<br>Lampiran</div>
+  </div>
+
+  <!-- USERS - DOKUMEN: Mengunggah -->
+  <div class="relationship" style="top: 400px; left: 121px;">
+    <div class="rel-text">Mengunggah</div>
+  </div>
+
+  <!-- USERS - NOTIFIKASI: Menerima Notifikasi -->
+  <div class="relationship" style="top: 700px; left: 330px;">
+    <div class="rel-text">Menerima<br>Notifikasi</div>
+  </div>
+
+  <!-- ================= ATTRIBUTES ================= -->
+  <!-- USERS -->
+  <div class="attr" style="top: 115px; left: 25px; width: 50px; height: 26px;"><span class="attr-pk">id</span></div>
+  <div class="attr" style="top: 150px; left: 15px; width: 70px; height: 26px;">nip_nim</div>
+  <div class="attr" style="top: 188px; left: 15px; width: 65px; height: 26px;">nama</div>
+  <div class="attr" style="top: 222px; left: 15px; width: 65px; height: 26px;">email</div>
+  <div class="attr" style="top: 258px; left: 15px; width: 72px; height: 26px;">password</div>
+  <div class="attr" style="top: 295px; left: 20px; width: 65px; height: 26px;">status</div>
+  <div class="attr" style="top: 330px; left: 25px; width: 60px; height: 26px;">role</div>
+  <div class="attr" style="top: 368px; left: 15px; width: 105px; height: 26px;">jabatan_struktural</div>
+  <div class="attr" style="top: 405px; left: 45px; width: 85px; height: 26px;">created_at</div>
+
+  <!-- TIM_ADHOC -->
+  <div class="attr" style="top: 110px; left: 515px; width: 50px; height: 26px;"><span class="attr-pk">id</span></div>
+  <div class="attr" style="top: 105px; left: 570px; width: 70px; height: 26px;">nomor_sk</div>
+  <div class="attr" style="top: 100px; left: 645px; width: 70px; height: 26px;">nama_tim</div>
+  <div class="attr" style="top: 108px; left: 720px; width: 65px; height: 26px;">deskripsi</div>
+  <div class="attr" style="top: 125px; left: 780px; width: 90px; height: 26px;">tanggal_mulai</div>
+  <div class="attr" style="top: 165px; left: 790px; width: 95px; height: 26px;">tanggal_selesai</div>
+  <div class="attr" style="top: 250px; left: 780px; width: 65px; height: 26px;">status</div>
+  <div class="attr" style="top: 285px; left: 760px; width: 80px; height: 26px;">created_by</div>
+
+  <!-- ANGGOTA_TIM -->
+  <div class="attr" style="top: 115px; left: 965px; width: 50px; height: 26px;"><span class="attr-pk">id</span></div>
+  <div class="attr" style="top: 115px; left: 1030px; width: 60px; height: 26px;">tim_id</div>
+  <div class="attr" style="top: 155px; left: 1180px; width: 65px; height: 26px;">user_id</div>
+  <div class="attr" style="top: 195px; left: 1185px; width: 75px; height: 26px;">peran_tim</div>
+  <div class="attr" style="top: 240px; left: 1180px; width: 85px; height: 26px;">tgl_bergabung</div>
+
+  <!-- TUGAS -->
+  <div class="attr" style="top: 455px; left: 450px; width: 50px; height: 26px;"><span class="attr-pk">id</span></div>
+  <div class="attr" style="top: 495px; left: 440px; width: 60px; height: 26px;">tim_id</div>
+  <div class="attr" style="top: 535px; left: 425px; width: 80px; height: 26px;">assigned_to</div>
+  <div class="attr" style="top: 575px; left: 430px; width: 85px; height: 26px;">judul_tugas</div>
+  <div class="attr" style="top: 450px; left: 760px; width: 95px; height: 26px;">deskripsi_tugas</div>
+  <div class="attr" style="top: 488px; left: 765px; width: 65px; height: 26px;">prioritas</div>
+  <div class="attr" style="top: 525px; left: 765px; width: 60px; height: 26px;">status</div>
+  <div class="attr" style="top: 562px; left: 760px; width: 68px; height: 26px;">deadline</div>
+  <div class="attr" style="top: 600px; left: 740px; width: 80px; height: 26px;">created_at</div>
+
+  <!-- TUGAS_FILES -->
+  <div class="attr" style="top: 425px; left: 1045px; width: 50px; height: 26px;"><span class="attr-pk">id</span></div>
+  <div class="attr" style="top: 450px; left: 1180px; width: 65px; height: 26px;">tugas_id</div>
+  <div class="attr" style="top: 488px; left: 1185px; width: 80px; height: 26px;">uploader_id</div>
+  <div class="attr" style="top: 525px; left: 1185px; width: 95px; height: 26px;">nama_file_asli</div>
+  <div class="attr" style="top: 562px; left: 1180px; width: 70px; height: 26px;">file_path</div>
+  <div class="attr" style="top: 600px; left: 1125px; width: 65px; height: 26px;">file_size</div>
+  <div class="attr" style="top: 600px; left: 1035px; width: 85px; height: 26px;">uploaded_at</div>
+
+  <!-- DOKUMEN -->
+  <div class="attr" style="top: 650px; left: 15px; width: 50px; height: 26px;"><span class="attr-pk">id</span></div>
+  <div class="attr" style="top: 690px; left: 10px; width: 58px; height: 26px;">tim_id</div>
+  <div class="attr" style="top: 730px; left: 5px; width: 75px; height: 26px;">uploader_id</div>
+  <div class="attr" style="top: 770px; left: 5px; width: 95px; height: 26px;">nama_dokumen</div>
+  <div class="attr" style="top: 805px; left: 65px; width: 90px; height: 26px;">jenis_dokumen</div>
+  <div class="attr" style="top: 810px; left: 165px; width: 70px; height: 26px;">file_path</div>
+  <div class="attr" style="top: 805px; left: 245px; width: 85px; height: 26px;">uploaded_at</div>
+
+  <!-- NOTIFIKASI -->
+  <div class="attr" style="top: 800px; left: 545px; width: 50px; height: 26px;"><span class="attr-pk">id</span></div>
+  <div class="attr" style="top: 805px; left: 600px; width: 60px; height: 26px;">user_id</div>
+  <div class="attr" style="top: 805px; left: 665px; width: 55px; height: 26px;">judul</div>
+  <div class="attr" style="top: 800px; left: 725px; width: 55px; height: 26px;">pesan</div>
+  <div class="attr" style="top: 775px; left: 775px; width: 60px; height: 26px;">is_read</div>
+  <div class="attr" style="top: 735px; left: 780px; width: 75px; height: 26px;">email_sent</div>
+  <div class="attr" style="top: 695px; left: 775px; width: 75px; height: 26px;">created_at</div>
+
+  <div class="erd-title">
+    <h3>Gambar 3.2 Entity Relationship Diagram (ERD)</h3>
+    <p>Sistem Manajemen Tim Ad Hoc LPAIP UKDW</p>
+  </div>
+</div>
+
+</body>
+</html>

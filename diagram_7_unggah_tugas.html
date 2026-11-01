@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  body { background-color: #ffffff; padding: 25px; display: flex; justify-content: center; }
+  .diagram-container { width: 1100px; border: 1.5px solid #222; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+  .diagram-title { text-align: center; font-size: 19px; font-weight: 700; padding: 14px; border-bottom: 1.5px solid #222; background: #fafafa; letter-spacing: 0.5px; }
+  .swimlanes { display: flex; width: 100%; position: relative; min-height: 840px; }
+  .lane { flex: 1; border-right: 1.5px solid #222; position: relative; }
+  .lane:last-child { border-right: none; }
+  .lane-header { font-weight: 700; font-size: 15.5px; text-align: center; padding: 11px; border-bottom: 1.5px solid #222; }
+  
+  .lane-user .lane-header { background-color: #d7ecd9; color: #1e4620; }
+  .lane-system .lane-header { background-color: #dbeafe; color: #1e3a8a; }
+  .lane-db .lane-header { background-color: #fef3c7; color: #78350f; }
+
+  /* Diagram Elements */
+  .node-initial { width: 24px; height: 24px; background: #111; border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); }
+  .node-final { width: 28px; height: 28px; border: 2px solid #111; border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; }
+  .node-final-inner { width: 16px; height: 16px; background: #111; border-radius: 50%; }
+
+  .act-box {
+    position: absolute; width: 260px; left: 50%; transform: translateX(-50%);
+    padding: 10px 14px; border-radius: 8px; font-size: 13px; text-align: center;
+    font-weight: 600; line-height: 1.35; border: 1.5px solid #222; z-index: 10;
+  }
+  .box-green { background: #e8f5e9; color: #1b5e20; border-color: #2e7d32; }
+  .box-blue { background: #eff6ff; color: #1e40af; border-color: #2563eb; }
+  .box-yellow { background: #fefce8; color: #854d0e; border-color: #d97706; }
+  .box-red { background: #fee2e2; color: #991b1b; border-color: #dc2626; }
+
+  /* Diamond Decision */
+  .decision {
+    position: absolute; width: 125px; height: 70px; left: 50%; transform: translateX(-50%);
+    background: #e0f2fe; border: 1.5px solid #0284c7; z-index: 10;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    box-shadow: 0 0 0 1px #0284c7;
+  }
+  .decision-inner { font-size: 11.5px; font-weight: 700; color: #0369a1; padding: 4px 12px; line-height: 1.2; }
+
+  svg.arrows { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+  .branch-label { font-size: 11.5px; font-weight: 700; fill: #333; }
+</style>
+</head>
+<body>
+<div class="diagram-container">
+  <div class="diagram-title">7. ACTIVITY DIAGRAM: PENGERJAAN TUGAS & UNGGAH FILE (tugas_detail.php)</div>
+  <div class="swimlanes">
+    <svg class="arrows">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#222" />
+        </marker>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626" />
+        </marker>
+      </defs>
+      
+          <line x1="183" y1="95" x2="183" y2="130" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <line x1="183" y1="180" x2="183" y2="225" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <path d="M 313 250 L 420 250" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <line x1="550" y1="280" x2="550" y2="320" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <path d="M 485 355 L 313 355" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrow-red)" />
+          <text x="390" y="347" class="branch-label" fill="#dc2626">Tidak</text>
+          <path d="M 615 355 L 680 445" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <text x="640" y="390" class="branch-label">Valid</text>
+          <line x1="550" y1="480" x2="550" y2="520" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <path d="M 680 545 L 787 545" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <line x1="917" y1="575" x2="917" y2="635" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <path d="M 787 660 L 680 660" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <path d="M 420 660 L 313 660" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+          <line x1="183" y1="690" x2="183" y2="750" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+        
+    </svg>
+
+    <div class="lane lane-user">
+      <div class="lane-header">Anggota Tim (PIC)</div>
+      
+          <div class="node-initial" style="top: 70px;"></div>
+          <div class="act-box box-green" style="top: 130px;">
+            Akses Halaman Detail Tugas &<br>Update Status Pengerjaan
+          </div>
+          <div class="act-box box-green" style="top: 225px;">
+            Pilih File Lampiran Hasil Kerja &<br>Klik Tombol "Unggah Lampiran"
+          </div>
+          <div class="act-box box-red" style="top: 330px; width: 230px; font-size: 12px;">
+            Tampilkan Pesan Error<br>("Format / Ukuran File Tidak Diizinkan")
+          </div>
+          <div class="act-box box-green" style="top: 635px;">
+            Melihat File Lampiran Terunggah &<br>Status Tugas Terupdate
+          </div>
+          <div class="node-final" style="top: 750px;">
+            <div class="node-final-inner"></div>
+          </div>
+        
+    </div>
+
+    <div class="lane lane-system">
+      <div class="lane-header">Sistem Web (PHP)</div>
+      
+          <div class="act-box box-blue" style="top: 225px;">
+            Validasi Ekstensi & Ukuran File<br>(PDF, DOCX, XLSX, ZIP)
+          </div>
+          <div class="decision" style="top: 320px;">
+            <div class="decision-inner">File<br>Valid?</div>
+          </div>
+          <div class="act-box box-blue" style="top: 420px;">
+            Generate Nama File Unik & Simpan ke<br>Folder uploads/tugas_files/
+          </div>
+          <div class="act-box box-blue" style="top: 520px;">
+            Update Status Tugas Menjadi 'in_progress'<br>atau 'completed'
+          </div>
+          <div class="act-box box-blue" style="top: 635px;">
+            Refresh Halaman Detail Tugas
+          </div>
+        
+    </div>
+
+    <div class="lane lane-db">
+      <div class="lane-header">Database MySQL</div>
+      
+          <div class="act-box box-yellow" style="top: 520px;">
+            Simpan Metadata File Lampiran<br>(INSERT INTO tugas_files ...)
+          </div>
+          <div class="act-box box-yellow" style="top: 635px;">
+            Update Status Pengerjaan Tugas<br>(UPDATE tugas SET status = ...)
+          </div>
+        
+    </div>
+  </div>
+</div>
+</body>
+</html>

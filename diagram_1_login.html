@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  body { background-color: #ffffff; padding: 30px; display: flex; justify-content: center; }
+  .diagram-container { width: 1100px; border: 1.5px solid #222; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+  .diagram-title { text-align: center; font-size: 20px; font-weight: 700; padding: 15px; border-bottom: 1.5px solid #222; background: #fafafa; letter-spacing: 0.5px; }
+  .swimlanes { display: flex; width: 100%; position: relative; min-height: 980px; }
+  .lane { flex: 1; border-right: 1.5px solid #222; position: relative; }
+  .lane:last-child { border-right: none; }
+  .lane-header { font-weight: 700; font-size: 16px; text-align: center; padding: 12px; border-bottom: 1.5px solid #222; }
+  
+  .lane-user .lane-header { background-color: #d7ecd9; color: #1e4620; }
+  .lane-system .lane-header { background-color: #dbeafe; color: #1e3a8a; }
+  .lane-db .lane-header { background-color: #fef3c7; color: #78350f; }
+
+  /* Diagram Elements */
+  .node-initial { width: 26px; height: 26px; background: #111; border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); top: 75px; }
+  .node-final { width: 30px; height: 30px; border: 2.5px solid #111; border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); bottom: 40px; display: flex; align-items: center; justify-content: center; }
+  .node-final-inner { width: 18px; height: 18px; background: #111; border-radius: 50%; }
+
+  .act-box {
+    position: absolute; width: 260px; left: 50%; transform: translateX(-50%);
+    padding: 12px 14px; border-radius: 10px; font-size: 13.5px; text-align: center;
+    font-weight: 600; line-height: 1.35; border: 1.5px solid #222; z-index: 10;
+  }
+  .box-green { background: #e8f5e9; color: #1b5e20; border-color: #2e7d32; }
+  .box-blue { background: #eff6ff; color: #1e40af; border-color: #2563eb; }
+  .box-yellow { background: #fefce8; color: #854d0e; border-color: #d97706; }
+  .box-red { background: #fee2e2; color: #991b1b; border-color: #dc2626; }
+
+  /* Diamond Decision */
+  .decision {
+    position: absolute; width: 130px; height: 75px; left: 50%; transform: translateX(-50%);
+    background: #e0f2fe; border: 1.5px solid #0284c7; z-index: 10;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .decision-inner { font-size: 12px; font-weight: 700; color: #0369a1; padding: 5px 15px; line-height: 1.2; }
+
+  /* SVG overlay for lines and arrows */
+  svg.arrows { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+  .branch-label { font-size: 12px; font-weight: 700; fill: #333; }
+</style>
+</head>
+<body>
+
+<div class="diagram-container">
+  <div class="diagram-title">1. ACTIVITY DIAGRAM: LOGIN SISTEM (login.php)</div>
+  <div class="swimlanes">
+    <!-- SVG ARROWS -->
+    <svg class="arrows">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#222" />
+        </marker>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626" />
+        </marker>
+      </defs>
+
+      <!-- 1. Initial -> Input Form -->
+      <line x1="183" y1="101" x2="183" y2="135" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- 2. Input Form -> Validasi Kelengkapan (cross to system) -->
+      <path d="M 313 162 L 420 162" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- 3. Validasi -> Decision: Input Lengkap? -->
+      <line x1="550" y1="188" x2="550" y2="225" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- 4. Decision: Input Lengkap? -> Tidak -> Error -->
+      <path d="M 485 262 L 313 262" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrow-red)" />
+      <text x="390" y="254" class="branch-label" fill="#dc2626">Tidak</text>
+
+      <!-- 5. Decision: Input Lengkap? -> Ya -> Query DB -->
+      <path d="M 615 262 L 787 262" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+      <text x="690" y="254" class="branch-label">Ya</text>
+
+      <!-- 6. Query DB -> Return Data User -->
+      <line x1="917" y1="288" x2="917" y2="340" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- 7. Return Data User -> Verifikasi Hash Password -->
+      <path d="M 787 365 L 680 365" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- 8. Verifikasi Hash -> Decision: Kredensial Valid? -->
+      <line x1="550" y1="392" x2="550" y2="435" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- 9. Decision: Kredensial Valid? -> Tidak -> Error -->
+      <path d="M 485 472 L 313 472" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrow-red)" />
+      <text x="390" y="464" class="branch-label" fill="#dc2626">Tidak</text>
+
+      <!-- 10. Decision: Kredensial Valid? -> Ya -> Decision: Akun Aktif? -->
+      <line x1="550" y1="510" x2="550" y2="555" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+      <text x="560" y="535" class="branch-label">Ya</text>
+
+      <!-- 11. Decision: Akun Aktif? -> Tidak -> Error -->
+      <path d="M 485 592 L 313 592" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrow-red)" />
+      <text x="390" y="584" class="branch-label" fill="#dc2626">Tidak</text>
+
+      <!-- 12. Decision: Akun Aktif? -> Ya -> Buat Session -->
+      <line x1="550" y1="630" x2="550" y2="675" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+      <text x="560" y="655" class="branch-label">Ya</text>
+
+      <!-- 13. Buat Session -> Redirection ke Dashboard -->
+      <line x1="550" y1="727" x2="550" y2="765" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- 14. Redirection -> Masuk Dashboard -->
+      <path d="M 420 790 L 313 790" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- 15. Masuk Dashboard -> Final Node -->
+      <line x1="183" y1="817" x2="183" y2="865" stroke="#222" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- Error box loop back to Input -->
+      <path d="M 183 235 L 183 190" stroke="#991b1b" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow-red)" />
+    </svg>
+
+    <!-- LANE 1: PENGGUNA -->
+    <div class="lane lane-user">
+      <div class="lane-header">Pengguna</div>
+      <div class="node-initial"></div>
+      
+      <div class="act-box box-green" style="top: 135px;">
+        Akses Halaman Login &<br>Input Email + Password
+      </div>
+
+      <div class="act-box box-red" style="top: 235px; width: 230px; font-size: 12.5px;">
+        Tampilkan Pesan Error<br>("Form Belum Lengkap")
+      </div>
+
+      <div class="act-box box-red" style="top: 445px; width: 230px; font-size: 12.5px;">
+        Tampilkan Pesan Error<br>("Email / Password Salah")
+      </div>
+
+      <div class="act-box box-red" style="top: 565px; width: 230px; font-size: 12.5px;">
+        Tampilkan Pesan Error<br>("Akun Menunggu Persetujuan Admin")
+      </div>
+
+      <div class="act-box box-green" style="top: 765px;">
+        Masuk Halaman<br>Dashboard Utama
+      </div>
+
+      <div class="node-final" style="top: 865px;">
+        <div class="node-final-inner"></div>
+      </div>
+    </div>
+
+    <!-- LANE 2: SISTEM WEB -->
+    <div class="lane lane-system">
+      <div class="lane-header">Sistem Web (PHP)</div>
+      
+      <div class="act-box box-blue" style="top: 135px;">
+        Validasi Kelengkapan Form
+      </div>
+
+      <div class="decision" style="top: 225px;">
+        <div class="decision-inner">Input<br>Lengkap?</div>
+      </div>
+
+      <div class="act-box box-blue" style="top: 340px;">
+        Cocokkan Hash Password<br>(password_verify)
+      </div>
+
+      <div class="decision" style="top: 435px;">
+        <div class="decision-inner">Kredensial<br>Valid?</div>
+      </div>
+
+      <div class="decision" style="top: 555px;">
+        <div class="decision-inner">Akun Aktif<br>(status = 1)?</div>
+      </div>
+
+      <div class="act-box box-blue" style="top: 675px;">
+        Buat Session Login &<br>Simpan Role Pengguna
+      </div>
+
+      <div class="act-box box-blue" style="top: 765px;">
+        Redirection ke Dashboard Utama
+      </div>
+    </div>
+
+    <!-- LANE 3: DATABASE MYSQL -->
+    <div class="lane lane-db">
+      <div class="lane-header">Database MySQL</div>
+      
+      <div class="act-box box-yellow" style="top: 235px;">
+        Query Cari Data Pengguna<br>(SELECT * FROM users WHERE email)
+      </div>
+
+      <div class="act-box box-yellow" style="top: 340px;">
+        Return Data User &amp;<br>Hash Password
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

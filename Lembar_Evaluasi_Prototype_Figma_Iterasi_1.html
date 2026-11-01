@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembar Evaluasi Prototype Figma (Iterasi I) - SIM Tim Ad Hoc LPAIP UKDW</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 12mm 14mm 12mm 14mm;
+        }
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            margin: 0;
+            padding: 20px;
+            font-size: 9pt;
+            line-height: 1.35;
+        }
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 24px 28px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+        .header {
+            border-bottom: 2.5px solid #6b0c22;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .header h3 {
+            margin: 0;
+            font-size: 12pt;
+            color: #6b0c22;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .header h4 {
+            margin: 2px 0 0 0;
+            font-size: 10pt;
+            color: #0f172a;
+            font-weight: 600;
+        }
+        .header p {
+            margin: 2px 0 0 0;
+            font-size: 8pt;
+            color: #475569;
+        }
+        .title-box {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .title-box h4 {
+            margin: 0;
+            font-size: 11pt;
+            font-weight: 700;
+            color: #0f172a;
+            text-decoration: underline;
+        }
+        .title-box small {
+            color: #64748b;
+            font-size: 7.8pt;
+        }
+        .meta-box {
+            background: #fdf2f4;
+            border: 1px solid #fecdd3;
+            border-radius: 6px;
+            padding: 8px 14px;
+            margin-bottom: 12px;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px 20px;
+            font-size: 8.5pt;
+        }
+        .meta-row {
+            display: flex;
+            align-items: center;
+        }
+        .meta-label {
+            width: 130px;
+            font-weight: 600;
+            color: #334155;
+        }
+        .meta-value {
+            flex-grow: 1;
+            border-bottom: 1px dotted #94a3b8;
+            padding-bottom: 1px;
+            font-weight: 500;
+        }
+        .instruction-box {
+            background: #eff6ff;
+            border-left: 3px solid #2563eb;
+            padding: 6px 10px;
+            margin-bottom: 10px;
+            font-size: 8pt;
+            color: #1e3a8a;
+        }
+        h5.section-title {
+            margin: 12px 0 6px 0;
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: #6b0c22;
+            border-left: 3px solid #6b0c22;
+            padding-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+            font-size: 8.5pt;
+        }
+        table th, table td {
+            border: 1px solid #cbd5e1;
+            padding: 6px 7px;
+            vertical-align: top;
+        }
+        table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            font-weight: 700;
+            text-align: left;
+        }
+        .text-center { text-align: center; }
+        .badge-role {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 7.5pt;
+            font-weight: 600;
+        }
+        .badge-admin { background: #fee2e2; color: #991b1b; }
+        .badge-ketua { background: #fef3c7; color: #92400e; }
+        .badge-anggota { background: #e0e7ff; color: #3730a3; }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 7.5pt;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .box-check {
+            width: 11px;
+            height: 11px;
+            border: 1.5px solid #475569;
+            display: inline-block;
+            border-radius: 2px;
+        }
+        .notes-area {
+            border: 1px dashed #cbd5e1;
+            border-radius: 4px;
+            height: 44px;
+            background: #ffffff;
+        }
+        .signature-box {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 14px;
+            font-size: 8.5pt;
+        }
+        .signature-col {
+            text-align: center;
+            width: 210px;
+        }
+        .btn-print {
+            background: #6b0c22;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 9.5pt;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(107,12,34,0.3);
+            margin-bottom: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-print:hover {
+            background: #83102b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="no-print" style="text-align: center; margin-bottom: 12px;">
+    <button class="btn-print" onclick="window.print()">
+        🖨️ Cetak / Simpan sebagai PDF (Ctrl + P)
+    </button>
+</div>
+
+<div class="container">
+    <!-- KOP FORM -->
+    <div class="header">
+        <h3>UNIVERSITAS KRISTEN DUTA WACANA</h3>
+        <h4>LEMBAGA PENGEMBANGAN AKADEMIK DAN INOVASI PEMBELAJARAN (LPAIP)</h4>
+        <p>Skripsi: Sistem Informasi Manajemen Tim Ad Hoc Berbasis Web (Goal-Directed Design & Evolutionary Prototyping)</p>
+    </div>
+
+    <div class="title-box">
+        <h4>LEMBAR PENCATATAN EVALUASI PROTOTYPE FIGMA (ITERASI I)</h4>
+        <small>Dokumen Lampiran Sub-bab 3.4.5 Refinement — Peneliti: Rizky Chrales Christiaan (NIM: 71220902)</small>
+    </div>
+
+    <!-- DATA RESPONDEN -->
+    <div class="meta-box">
+        <div class="meta-grid">
+            <div class="meta-row">
+                <span class="meta-label">Nama Responden</span>
+                <span class="meta-value">: </span>
+            </div>
+            <div class="meta-row">
+                <span class="meta-label">Tanggal Pengujian</span>
+                <span class="meta-value">: </span>
+            </div>
+            <div class="meta-row">
+                <span class="meta-label">NIP / NIM</span>
+                <span class="meta-value">: </span>
+            </div>
+            <div class="meta-row">
+                <span class="meta-label">Peran Pengguna (Role)</span>
+                <span class="meta-value">: [ &nbsp; ] Admin LPAIP &nbsp;&nbsp; [ &nbsp; ] Ketua Tim &nbsp;&nbsp; [ &nbsp; ] Anggota Tim</span>
+            </div>
+            <div class="meta-row">
+                <span class="meta-label">Jabatan / Unit Kerja</span>
+                <span class="meta-value">: </span>
+            </div>
+            <div class="meta-row">
+                <span class="meta-label">Waktu Sesi</span>
+                <span class="meta-value">: ........... s.d. ........... WIB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PETUNJUK EVALUASI SESUAI BAB 3 -->
+    <div class="instruction-box">
+        <strong>Petunjuk Penguji (Peneliti):</strong>
+        1. Bacakan kalimat instruksi di bawah ini secara langsung kepada responden tanpa mengarahkan langkah tombol.
+        2. Amati responden saat mencoba prototype Figma.
+        3. Beri tanda centang [✓] pada salah satu kolom Status Penyelesaian (<em>Berhasil tanpa bantuan</em>, <em>Berhasil dengan bantuan</em>, atau <em>Belum berhasil</em>).
+        4. Catat kendala yang dialami responden serta komentar/umpan baliknya.
+    </div>
+
+    <!-- TABEL 3.9 PENCATATAN EVALUASI SESUAI NASKAH SKRIPSI -->
+    <h5 class="section-title">Tabel 3.9 Pencatatan Evaluasi Prototype Figma</h5>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 5%;" class="text-center">No</th>
+                <th style="width: 13%;">Kode & Peran</th>
+                <th style="width: 32%;">Instruksi Skenario Tugas (Dibacakan ke Pengguna)</th>
+                <th style="width: 18%;">Status Penyelesaian (Beri Centang ✓)</th>
+                <th style="width: 16%;">Kendala yang Ditemukan (Observasi Peneliti)</th>
+                <th style="width: 16%;">Umpan Balik Pengguna (Masukan Langsung)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ADMIN LPAIP -->
+            <tr>
+                <td class="text-center fw-bold">1</td>
+                <td>
+                    <strong>F-ADM-01</strong><br>
+                    <span class="badge-role badge-admin">Admin LPAIP</span>
+                </td>
+                <td>
+                    <strong>"Anda login sebagai Admin LPAIP. Silakan buka menu daftar tim untuk melihat seluruh Tim Ad Hoc yang sedang aktif."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menemukan menu Kelola Tim Ad Hoc melalui navigasi.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+            <tr>
+                <td class="text-center fw-bold">2</td>
+                <td>
+                    <strong>F-ADM-02</strong><br>
+                    <span class="badge-role badge-admin">Admin LPAIP</span>
+                </td>
+                <td>
+                    <strong>"LPAIP akan membentuk tim baru. Silakan klik tombol untuk membuat Tim Ad Hoc baru dan tunjukkan di mana mengisi data tim."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menemukan tombol 'Tambah Tim' dan form pembentukan tim.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+            <tr>
+                <td class="text-center fw-bold">3</td>
+                <td>
+                    <strong>F-ADM-03</strong><br>
+                    <span class="badge-role badge-admin">Admin LPAIP</span>
+                </td>
+                <td>
+                    <strong>"SK Rektorat telah terbit. Silakan buka salah satu tim, lalu masukkan 1 nama dosen ke dalam susunan personil tim tersebut."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menuju Tab 2 (Personil) dan membuka form '+ Tambah Personil Anggota'.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+            <tr>
+                <td class="text-center fw-bold">4</td>
+                <td>
+                    <strong>F-ADM-04</strong><br>
+                    <span class="badge-role badge-admin">Admin LPAIP</span>
+                </td>
+                <td>
+                    <strong>"Silakan cari tombol untuk mengunduh draf Surat Permohonan SK (.doc) atau melihat berkas PDF SK Resmi tim."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menemukan tombol 'Unduh Permohonan SK' atau Tab 1 Surat SK.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+
+            <!-- KETUA TIM -->
+            <tr>
+                <td class="text-center fw-bold">5</td>
+                <td>
+                    <strong>F-KET-01</strong><br>
+                    <span class="badge-role badge-ketua">Ketua Tim</span>
+                </td>
+                <td>
+                    <strong>"Di Dashboard, temukan tim di mana Anda bertindak sebagai Ketua, lalu klik untuk masuk ke ruang kerja tim tersebut."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menemukan tim di dashboard dan membuka ruang kerja tim.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+            <tr>
+                <td class="text-center fw-bold">6</td>
+                <td>
+                    <strong>F-KET-02</strong><br>
+                    <span class="badge-role badge-ketua">Ketua Tim</span>
+                </td>
+                <td>
+                    <strong>"Di dalam ruang kerja tim (Tab Penugasan), buatlah 1 tugas baru untuk anggota lengkap dengan batas waktunya (deadline)."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menuju Tab 3, klik form penugasan, memilih PIC dan deadline.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+            <tr>
+                <td class="text-center fw-bold">7</td>
+                <td>
+                    <strong>F-KET-03</strong><br>
+                    <span class="badge-role badge-ketua">Ketua Tim</span>
+                </td>
+                <td>
+                    <strong>"Tunjukkan di mana Anda bisa melihat apakah tugas anggota sudah selesai atau belum, serta persentase progres capaian tim (%)."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menemukan bilah progress capaian tim (%) dan status centang tugas.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+
+            <!-- ANGGOTA TIM -->
+            <tr>
+                <td class="text-center fw-bold">8</td>
+                <td>
+                    <strong>F-ANG-01</strong><br>
+                    <span class="badge-role badge-anggota">Anggota Tim</span>
+                </td>
+                <td>
+                    <strong>"Masuk ke tim Anda, buka Tab Penugasan Kerja, lalu temukan tugas yang diberikan khusus atas nama Anda."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Membuka Tab 3 dan mengidentifikasi baris tugas sesuai nama sendiri.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+            <tr>
+                <td class="text-center fw-bold">9</td>
+                <td>
+                    <strong>F-ANG-02</strong><br>
+                    <span class="badge-role badge-anggota">Anggota Tim</span>
+                </td>
+                <td>
+                    <strong>"Pekerjaan tugas Anda selesai. Silakan klik tombol untuk mengunggah file bukti tugas agar statusnya berubah Selesai."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menemukan tombol 'Kirim Hasil Tugas' dan form upload bukti kerja.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+            <tr>
+                <td class="text-center fw-bold">10</td>
+                <td>
+                    <strong>F-ANG-03</strong><br>
+                    <span class="badge-role badge-anggota">Anggota Tim</span>
+                </td>
+                <td>
+                    <strong>"Buka Tab Repositori & LPJ, lalu cari di mana Anda bisa mengunduh berkas LPJ atau dokumen pendukung tim."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menuju Tab 4 dan menemukan tombol unduh berkas LPJ / dokumen.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+            <tr>
+                <td class="text-center fw-bold">11</td>
+                <td>
+                    <strong>F-ANG-04</strong><br>
+                    <span class="badge-role badge-anggota">Anggota Tim</span>
+                </td>
+                <td>
+                    <strong>"Tunjukkan di mana Anda bisa melihat tanggal deadline tugas Anda dan di mana letak lonceng notifikasinya."</strong><br>
+                    <small class="text-muted">Hasil yang Diharapkan: Menemukan kolom tanggal deadline dan ikon lonceng notifikasi.</small>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil tanpa bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Berhasil dengan bantuan</label>
+                        <label class="checkbox-item"><span class="box-check"></span> Belum berhasil</label>
+                    </div>
+                </td>
+                <td><div class="notes-area"></div></td>
+                <td><div class="notes-area"></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- PERTANYAAN WAWANCARA KUALITATIF SPESIFIK -->
+    <h5 class="section-title">Umpan Balik Kualitatif Pengguna (Wawancara Penutup)</h5>
+    <div style="font-size: 8.5pt; color: #334155; margin-bottom: 12px;">
+        <p style="margin: 0 0 3px 0;"><strong>1. Kendala Navigasi & Alur:</strong> <em>"Saat mencoba tadi, adakah tombol atau menu yang posisinya membingungkan atau sempat sulit dicari? Jika ada, di bagian mana?"</em></p>
+        <div class="notes-area" style="height: 38px; margin-bottom: 8px;"></div>
+
+        <p style="margin: 0 0 3px 0;"><strong>2. Kejelasan Bahasa & Label Tombol:</strong> <em>"Apakah istilah pada tombol dan formulir (seperti 'Kirim Hasil Tugas', 'Permohonan SK', 'LPJ') sudah langsung dipahami, atau ada istilah yang janggal?"</em></p>
+        <div class="notes-area" style="height: 38px; margin-bottom: 8px;"></div>
+
+        <p style="margin: 0 0 3px 0;"><strong>3. Keterbacaan Visual:</strong> <em>"Bagaimana dengan warna merah maroon UKDW dan ukuran teksnya? Apakah ada tulisan yang terasa kekecilan atau warnanya kurang kontras?"</em></p>
+        <div class="notes-area" style="height: 38px; margin-bottom: 8px;"></div>
+
+        <p style="margin: 0 0 3px 0;"><strong>4. Alur Kerja Tim Ad Hoc:</strong> <em>"Menurut pengalaman Anda dalam kepanitiaan di UKDW, apakah pembagian 4 Tab (SK, Personil, Tugas, LPJ) sudah pas, atau ada alur penting yang terlewat?"</em></p>
+        <div class="notes-area" style="height: 38px;"></div>
+    </div>
+
+    <!-- TANDA TANGAN VALIDASI DATA EMPIRIS -->
+    <div class="signature-box">
+        <div class="signature-col">
+            <span>Responden Pengujian,</span>
+            <div style="height: 48px;"></div>
+            <span style="border-top: 1px solid #64748b; display: block; padding-top: 4px;">
+                ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+            </span>
+        </div>
+        <div class="signature-col">
+            <span>Yogyakarta, ............................. 2026<br>Peneliti Mahasiswa,</span>
+            <div style="height: 36px;"></div>
+            <span style="border-top: 1px solid #64748b; display: block; padding-top: 4px; font-weight: 600;">
+                Rizky Chrales Christiaan<br>NIM: 71220902
+            </span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

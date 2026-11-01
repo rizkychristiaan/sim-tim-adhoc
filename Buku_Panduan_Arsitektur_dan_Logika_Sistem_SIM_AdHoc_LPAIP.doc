@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="UTF-8">
+<title>Panduan Arsitektur dan Logika Sistem</title>
+<!--[if gte mso 9]>
+<xml>
+  <w:WordDocument>
+    <w:View>Print</w:View>
+    <w:Zoom>100</w:Zoom>
+    <w:DoNotOptimizeForBrowser/>
+  </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 2.5cm 2.5cm 2.5cm 2.5cm;
+    mso-header-margin: 1.25cm;
+    mso-footer-margin: 1.25cm;
+  }
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+    color: #000000;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 18pt;
+    margin-bottom: 12pt;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+    border-bottom: 1.5pt solid #1e3a8a;
+    padding-bottom: 3pt;
+    color: #1e3a8a;
+  }
+  h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+    color: #0d47a1;
+  }
+  p {
+    margin: 0 0 6pt 0;
+    text-align: justify;
+    text-indent: 20pt;
+  }
+  p.no-indent {
+    text-indent: 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10pt 0 14pt 0;
+    font-size: 11pt;
+  }
+  th {
+    background-color: #e2e8f0;
+    border: 1px solid #000;
+    padding: 6pt 8pt;
+    font-weight: bold;
+    text-align: center;
+  }
+  td {
+    border: 1px solid #000;
+    padding: 5pt 8pt;
+    vertical-align: top;
+  }
+  .box-note {
+    background-color: #f8fafc;
+    border-left: 4pt solid #2563eb;
+    padding: 8pt 12pt;
+    margin: 8pt 0 12pt 0;
+    font-size: 11pt;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+  .cover-title {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    margin-top: 60pt;
+    margin-bottom: 10pt;
+    color: #1e3a8a;
+  }
+  .cover-sub {
+    text-align: center;
+    font-size: 13pt;
+    font-weight: bold;
+    margin-bottom: 80pt;
+  }
+  .cover-author {
+    text-align: center;
+    font-size: 12pt;
+    margin-bottom: 90pt;
+    line-height: 1.6;
+  }
+  .cover-instansi {
+    text-align: center;
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 1.6;
+  }
+  code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 10.5pt;
+    background-color: #f1f5f9;
+    padding: 1pt 3pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HALAMAN SAMPUL ==================== -->
+<div class="cover-title">BUKU PANDUAN ARSITEKTUR, LOGIKA SISTEM, DAN BEDAH KODE WEB</div>
+<div class="cover-sub">SISTEM INFORMASI MANAJEMEN TIM AD HOC BIDANG PENDIDIKAN<br>(STUDI KASUS: LPAIP UKDW)</div>
+
+<div class="cover-author">
+  <b>Disusun Oleh:</b><br>
+  <b>RIZKY CHARLES CHRISTIAAN</b><br>
+  NIM: 71220901
+</div>
+
+<div class="cover-instansi">
+  PROGRAM STUDI INFORMATIKA<br>
+  FAKULTAS TEKNOLOGI INFORMASI<br>
+  UNIVERSITAS KRISTEN DUTA WACANA<br>
+  YOGYAKARTA<br>
+  2026
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== KATA PENGANTAR & RINGKASAN ==================== -->
+<h1>RINGKASAN EKSEKUTIF</h1>
+<p>Dokumen ini disusun sebagai buku panduan komprehensif mengenai arsitektur, mekanisme logika bisnis, aliran data, pengamanan sistem, dan struktur kode sumber (<i>source code</i>) pada aplikasi <b>Sistem Informasi Manajemen Tim Ad Hoc LPAIP UKDW</b>. Panduan ini dirancang untuk memberikan pemahaman menyeluruh terhadap setiap modul yang dibangun serta memastikan keselarasan penuh antara sistem web dengan dokumen Tugas Akhir Skripsi (BAB I sampai BAB III).</p>
+
+<p>Sistem ini dikembangkan menggunakan bahasa pemrograman PHP Native berbasis arsitektur modular yang bersih, database MySQL dengan PDO (PHP Data Objects) Prepared Statements untuk mencegah serangan SQL Injection, enkripsi kata sandi menggunakan algoritma BCRYPT, serta antarmuka responsif berbasis Bootstrap 5.</p>
+
+<h2>DAFTAR MODUL SISTEM</h2>
+<table>
+  <tr>
+    <th style="width: 8%;">No</th>
+    <th style="width: 25%;">Nama Modul</th>
+    <th style="width: 32%;">File Utama</th>
+    <th style="width: 35%;">Aktor Pengguna</th>
+  </tr>
+  <tr>
+    <td style="text-align:center;">1</td>
+    <td><b>Autentikasi &amp; RBAC</b></td>
+    <td><code>app/auth/login.php</code>, <code>register.php</code></td>
+    <td>Admin, Ketua Tim, Anggota Tim</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">2</td>
+    <td><b>Dashboard Utama</b></td>
+    <td><code>app/pages/dashboard.php</code></td>
+    <td>Admin, Ketua Tim, Anggota Tim</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">3</td>
+    <td><b>Manajemen Tim &amp; Plotting</b></td>
+    <td><code>app/pages/tim_adhoc.php</code>, <code>tim_detail.php</code></td>
+    <td>Admin LPAIP, Ketua Tim</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">4</td>
+    <td><b>Manajemen Penugasan (Task)</b></td>
+    <td><code>app/pages/tugas.php</code></td>
+    <td>Ketua Tim (Pemberi), Anggota (PIC)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">5</td>
+    <td><b>Otomatisasi SK Resmi (.doc)</b></td>
+    <td><code>app/pages/download_sk.php</code></td>
+    <td>Admin, Ketua Tim, Anggota Tim</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">6</td>
+    <td><b>Repositori Berkas &amp; LPJ</b></td>
+    <td><code>app/pages/dokumen.php</code></td>
+    <td>Admin, Ketua Tim, Anggota Tim</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">7</td>
+    <td><b>Notifikasi &amp; Deadline</b></td>
+    <td><code>app/includes/navbar.php</code>, <code>database.php</code></td>
+    <td>Seluruh Pengguna Login</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">8</td>
+    <td><b>Kelola User &amp; Approval</b></td>
+    <td><code>app/admin/kelola_user.php</code></td>
+    <td>Khusus Admin LPAIP</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">9</td>
+    <td><b>Profil &amp; Ubah Password</b></td>
+    <td><code>app/pages/profile.php</code></td>
+    <td>Seluruh Pengguna Login</td>
+  </tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== MODUL 1 ==================== -->
+<h2>MODUL 1: AUTENTIKASI DAN ROLE-BASED ACCESS CONTROL (RBAC)</h2>
+
+<h3>1.1 Deskripsi dan Tujuan</h3>
+<p class="no-indent">Modul ini bertugas memastikan identitas pengguna secara sah sebelum diberikan hak akses ke dalam sistem web. Sistem menerapkan konsep Role-Based Access Control (RBAC) yang membagi kewenangan pengguna menjadi 3 tingkatan: <b>Admin</b>, <b>Ketua Tim</b>, dan <b>Anggota Tim</b>.</p>
+
+<h3>1.2 File Kode Sumber Terkait</h3>
+<ul>
+  <li><code>app/auth/login.php</code>: Memproses verifikasi kredensial email dan password.</li>
+  <li><code>app/auth/register.php</code>: Formulir registrasi calon pengguna secara mandiri.</li>
+  <li><code>app/auth/logout.php</code>: Menghancurkan session server secara aman saat keluar.</li>
+  <li><code>app/config/database.php</code>: Menyediakan fungsi penjaga akses <code>check_login()</code> dan <code>check_role()</code>.</li>
+</ul>
+
+<h3>1.3 Alur dan Logika Pemrosesan</h3>
+<ol>
+  <li>Pengguna menginputkan alamat email dan password pada halaman <code>login.php</code>.</li>
+  <li>Sistem mengeksekusi prepared statement: <code>SELECT * FROM users WHERE email = ?</code>.</li>
+  <li>Sistem memvalidasi kecocokan password menggunakan fungsi bawaan PHP:
+      <code>password_verify($password, $user['password'])</code>.
+      Tidak ada lagi celah hardcode bypass password, sehingga seluruh pengecekan murni menggunakan kriptografi satu arah Bcrypt.</li>
+  <li>Sistem mengecek status approval akun (<code>$user['status']</code>). Jika status bernilai 0 (pending), sistem menolak login dan memunculkan pemberitahuan bahwa akun sedang menunggu persetujuan Admin LPAIP.</li>
+  <li>Jika akun aktif (status = 1), sistem menginisialisasi Session server:
+      <ul>
+        <li><code>$_SESSION['user_id']</code> = ID unik akun di basis data.</li>
+        <li><code>$_SESSION['nama']</code> = Nama lengkap dan gelar pengguna.</li>
+        <li><code>$_SESSION['email']</code> = Alamat email pengguna.</li>
+        <li><code>$_SESSION['role']</code> = Peran akses pengguna (admin/ketua/anggota).</li>
+        <li><code>$_SESSION['nip_nim']</code> = Nomor induk kepegawaian atau mahasiswa.</li>
+      </ul>
+  </li>
+  <li>Pengguna dialihkan menuju <code>pages/dashboard.php</code>.</li>
+</ol>
+
+<div class="box-note">
+  <b>Korelasi Skripsi BAB III:</b> Sesuai dengan <i>Subbab 3.7.1 Tahap 1 (Otentikasi dan Pengarahan Akses Pengguna)</i> dan <i>Gambar 3.7 (Activity Diagram Login)</i>.
+</div>
+
+<!-- ==================== MODUL 2 ==================== -->
+<h2>MODUL 2: DASHBOARD UTAMA DAN MONITORING DINAMIS</h2>
+
+<h3>2.1 Deskripsi dan Tujuan</h3>
+<p class="no-indent">Dashboard berfungsi sebagai pusat informasi awal saat pengguna berhasil login. Tampilan dashboard dirancang adaptif berdasarkan peran pengguna, sehingga setiap aktor mendapatkan ringkasan data yang relevan dengan tanggung jawabnya.</p>
+
+<h3>2.2 File Kode Sumber Terkait</h3>
+<ul>
+  <li><code>app/pages/dashboard.php</code>: Pengolah data ringkasan dan antarmuka dashboard.</li>
+  <li><code>app/includes/navbar.php</code>: Bilah navigasi atas dengan lonceng notifikasi dan menu profil.</li>
+  <li><code>app/includes/sidebar.php</code>: Bilah navigasi menu utama sebelah kiri.</li>
+</ul>
+
+<h3>2.3 Logika Pemrosesan Real-time Nama dan Statistik</h3>
+<ol>
+  <li><b>Sinkronisasi Nama Akun:</b> Setiap kali dashboard dimuat, sistem membaca ID pengguna dari session dan mengeksekusi query langsung ke tabel users: <code>SELECT * FROM users WHERE id = ?</code>. Hal ini menjamin nama pengguna yang muncul pada banner sambutan selalu 100% akurat mengikuti akun yang sedang login.</li>
+  <li><b>Avatar Inisial Huruf:</b> Mengambil karakter pertama dari nama pengguna (<code>strtoupper(substr($user_nama, 0, 1))</code>) dan merendernya dalam bentuk lingkaran bergradien navy UKDW yang kontras dan elegan.</li>
+  <li><b>Isolasi Statistik Berdasarkan Peran:</b>
+    <ul>
+      <li><i>Jika Akun Admin:</i> Menghitung seluruh data universitas (Total Tim, Tim Aktif, Total Tugas, Tugas Selesai).</li>
+      <li><i>Jika Akun Ketua / Anggota:</i> Hanya menghitung tim dan penugasan di mana akun tersebut terdaftar sebagai personil dalam tabel <code>anggota_tim</code>.</li>
+    </ul>
+  </li>
+  <li><b>Daftar Tugas Mendesak:</b> Menampilkan daftar penugasan terdekat yang diurutkan berdasarkan tanggal deadline paling awal (<code>ORDER BY deadline ASC LIMIT 6</code>).</li>
+</ol>
+
+<div class="page-break"></div>
+
+<!-- ==================== MODUL 3 ==================== -->
+<h2>MODUL 3: TATA KELOLA TIM AD HOC DAN PLOTTING ANGGOTA</h2>
+
+<h3>3.1 Deskripsi dan Tujuan</h3>
+<p class="no-indent">Modul ini menangani pencatatan Surat Keputusan (SK) Tim Ad Hoc yang dibentuk di lingkungan LPAIP UKDW serta penempatan (plotting) personil ke dalam susunan kepanitiaan tim.</p>
+
+<h3>3.2 File Kode Sumber Terkait</h3>
+<ul>
+  <li><code>app/pages/tim_adhoc.php</code>: Tata kelola master tim ad hoc, status operasional, dan filter.</li>
+  <li><code>app/pages/tim_detail.php</code>: Detail keanggotaan, plotting personil, dan pembagian tugas.</li>
+</ul>
+
+<h3>3.3 Mekanisme Keamanan dan Hak Akses</h3>
+<ol>
+  <li><b>Pembuatan Tim:</b> Hanya dapat dilakukan oleh Admin LPAIP dengan mengisi Nomor SK, Nama Tim, Deskripsi, Tanggal Mulai, Tanggal Selesai, dan Status.</li>
+  <li><b>Proteksi Akses Detail Tim (Anti-IDOR):</b> Pada <code>tim_detail.php?id=X</code>, sistem memeriksa apakah pengguna memiliki wewenang:
+      <code>if (!$is_admin && !$is_member) { redirect ke tim_adhoc.php; }</code>. Pengguna di luar tim tidak dapat mengintip susunan anggota tim lain hanya dengan mengganti parameter URL.</li>
+  <li><b>Plotting Anggota (Admin &amp; Ketua Tim):</b> Sesuai BAB III skripsi, wewenang menambah dan mengeluarkan anggota diberikan kepada <b>Admin LPAIP</b> serta <b>Ketua Tim</b> yang bersangkutan (<code>$can_manage_team</code>).</li>
+  <li><b>Opsi Penambahan Fleksibel:</b>
+    <ul>
+      <li><i>User Terdaftar:</i> Memilih personil yang sudah memiliki akun di sistem LPAIP.</li>
+      <li><i>Buat User Baru (Inline):</i> Langsung menginputkan NIP/NIM, nama, dan email baru. Akun baru otomatis dibuatkan password default (<code>user123</code>) dan langsung di-plotting ke dalam tim tanpa perlu berpindah halaman.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="box-note">
+  <b>Korelasi Skripsi BAB III:</b> Sesuai dengan <i>Subbab 3.7.1 Tahap 2 (Pembentukan dan Plotting Tim Ad Hoc)</i> dan <i>Gambar 3.8 (Activity Diagram Pembentukan Tim)</i>.
+</div>
+
+<!-- ==================== MODUL 4 ==================== -->
+<h2>MODUL 4: MANAJEMEN PENUGASAN (TASK MANAGEMENT)</h2>
+
+<h3>4.1 Deskripsi dan Tujuan</h3>
+<p class="no-indent">Modul penugasan digunakan oleh Ketua Tim untuk mendistribusikan beban kerja secara spesifik kepada masing-masing personil (Person in Charge / PIC), memantau tenggat waktu, dan menerima berkas hasil pengerjaan tugas secara digital.</p>
+
+<h3>4.2 File Kode Sumber Terkait</h3>
+<ul>
+  <li><code>app/pages/tugas.php</code>: Pusat pemantauan tugas, filter prioritas, dan unggah berkas tugas.</li>
+  <li><code>app/pages/tim_detail.php</code> (Tab Penugasan): Pembuatan penugasan baru oleh Ketua Tim.</li>
+</ul>
+
+<h3>4.3 Alur dan Fitur Unggulan</h3>
+<ol>
+  <li><b>Pembuatan Penugasan:</b> Ketua Tim menentukan Judul Tugas, Instruksi Kerja, PIC Penerima, Prioritas (<i>Rendah, Sedang, Tinggi, Mendesak</i>), dan Deadline. Notifikasi otomatis terkirim ke akun PIC.</li>
+  <li><b>Siklus Pembaruan Status:</b>
+      $$\text{Belum Dikerjakan} \longrightarrow \text{Sedang Dikerjakan} \longrightarrow \text{Menunggu Review} \longrightarrow \text{Selesai}$$
+  </li>
+  <li><b>Unggah Berkas Pengerjaan Multi-File (Multi-Upload):</b> Anggota tim dapat melampirkan beberapa file sekaligus sebagai bukti selesainya tugas. Berkas disimpan di <code>app/uploads/tugas/</code> dan dicatat di tabel <code>tugas_files</code>.</li>
+  <li><b>Deteksi Otomatis Tugas Terlambat (Overdue):</b> Jika tanggal hari ini telah melewati batas deadline dan status belum "Selesai", sistem secara otomatis memunculkan badge merah <b>(TERLAMBAT)</b> pada antarmuka.</li>
+</ol>
+
+<div class="page-break"></div>
+
+<!-- ==================== MODUL 5 ==================== -->
+<h2>MODUL 5: OTOMATISASI SURAT KEPUTUS RESMI FORMAT WORD (.DOC)</h2>
+
+<h3>5.1 Deskripsi dan Tujuan</h3>
+<p class="no-indent">Menjawab arahan dosen pembimbing skripsi agar luaran surat tugas dapat diunduh langsung dalam format dokumen Word (bukan PDF) yang siap diedit, sistem mengotomatisasi penyusunan naskah Keputusan Rektor resmi UKDW.</p>
+
+<h3>5.2 File Kode Sumber Terkait</h3>
+<ul>
+  <li><code>app/pages/surat_tugas.php</code>: Daftar tim dengan tombol aksi "Unduh Surat Tugas (.doc)".</li>
+  <li><code>app/pages/download_sk.php</code>: Generator berkas Word berbasis standar template UKDW.</li>
+  <li><code>app/assets/img/header_ukdw.png</code>: Gambar kop logo UKDW Yogyakarta (kiri atas).</li>
+  <li><code>app/assets/img/footer_ukdw.png</code>: Gambar banner ornamen dan kontak UKDW (bawah).</li>
+</ul>
+
+<h3>5.3 Struktur Naskah Word yang Dihasilkan</h3>
+<table>
+  <tr>
+    <th style="width: 25%;">Halaman Dokumen</th>
+    <th style="width: 75%;">Konten Resmi SK UKDW</th>
+  </tr>
+  <tr>
+    <td><b>Halaman 1</b></td>
+    <td>
+      • Gambar Kop Logo UKDW Yogyakarta di pojok kiri atas.<br>
+      • Judul: <code>KEPUTUSAN REKTOR UNIVERSITAS KRISTEN DUTA WACANA</code>.<br>
+      • Nomor SK dan Penetapan Judul Pengangkatan Tim Ad Hoc.<br>
+      • Konsiderans: <b>Membaca</b>, <b>Menimbang</b> (a, b, c), <b>Mengingat</b> (1-6).<br>
+      • Diktum: <b>MEMUTUSKAN - Menetapkan</b>.<br>
+      • Gambar Banner Footer UKDW di bagian bawah halaman.
+    </td>
+  </tr>
+  <tr>
+    <td><b>Halaman 2</b></td>
+    <td>
+      • <b>Diktum KESATU:</b> Masa berlaku SK &amp; Tabel Susunan Personil (No, Kedudukan Tim, Nama &amp; NIP/NIM, Jabatan Struktural).<br>
+      • <b>Diktum KEDUA - KEEMPAT:</b> Ketentuan pertanggungjawaban tim.<br>
+      • Tempat &amp; Tanggal Penetapan di Yogyakarta serta Tanda Tangan Rektor UKDW.<br>
+      • Tembusan Resmi (Yayasan, Warek, Dekan, Kepala LPAIP, Tim, Arsip).
+    </td>
+  </tr>
+  <tr>
+    <td><b>Halaman 3 (Lampiran)</b></td>
+    <td>
+      • <b>Lampiran Keputusan Rektor:</b> Judul rincian tugas pokok tim.<br>
+      • Daftar instruksi kerja dan PIC yang ditarik secara dinamis dari database penugasan.<br>
+      • Pengesahan tanda tangan Rektor UKDW.
+    </td>
+  </tr>
+</table>
+
+<h3>5.4 Teknologi Embedded Image MHTML</h3>
+<p class="no-indent">Gambar header dan footer dienkode ke dalam format Base64 dan dibungkus menggunakan arsitektur multipart MHTML (RFC 2557). Hal ini menjamin saat berkas <code>.doc</code> dibuka di Microsoft Word maupun LibreOffice di komputer mana pun tanpa koneksi internet, gambar logo dan footer tidak akan hilang (*broken image*).</p>
+
+<!-- ==================== MODUL 6 ==================== -->
+<h2>MODUL 6: REPOSITORI DOKUMEN DAN LPJ KEGIATAN</h2>
+
+<h3>6.1 Deskripsi dan Tujuan</h3>
+<p class="no-indent">Mengatasi permasalahan arsip yang tercecer, modul ini berfungsi sebagai repositori terpusat untuk menyimpan proposal, SK penugasan, notulen rapat, berita acara, serta Laporan Pertanggungjawaban (LPJ) akhir.</p>
+
+<h3>6.2 Logika Penyimpanan dan Hak Akses</h3>
+<ol>
+  <li>Admin dan Ketua Tim berhak mengunggah, mengedit metadata, dan menghapus dokumen yang keliru.</li>
+  <li>Anggota Tim memiliki hak baca (view) dan unduh (download) seluruh berkas yang berkaitan dengan timnya.</li>
+  <li>Sistem menerapkan validasi ekstensi berkas ketat (whitelist: <code>pdf, doc, docx, xls, xlsx, jpg, png, zip, rar</code>) serta sanitasi nama berkas guna mencegah celah keamanan upload script berbahaya.</li>
+</ol>
+
+<div class="page-break"></div>
+
+<!-- ==================== MODUL 7 ==================== -->
+<h2>MODUL 7: SISTEM NOTIFIKASI DAN PENGINGAT DEADLINE OTOMATIS</h2>
+
+<h3>7.1 Deskripsi dan Tujuan</h3>
+<p class="no-indent">Menyediakan mekanisme peringatan dini (early warning system) agar personil tidak melewatkan tenggat waktu tugas tanpa perlu mengandalkan pesan manual di WhatsApp Group.</p>
+
+<h3>7.2 Alur Logika Eksekusi Otomatis</h3>
+<ol>
+  <li>Setiap kali halaman web dibuka oleh pengguna, file <code>navbar.php</code> mengeksekusi fungsi <code>check_deadline_reminders($pdo, $user_id)</code>.</li>
+  <li>Sistem menghitung selisih hari antara tanggal hari ini dengan tanggal deadline seluruh tugas aktif:
+      $$\Delta \text{Hari} = \left\lfloor \frac{\text{strtotime(deadline)} - \text{strtotime(today)}}{86400} \right\rfloor$$
+  </li>
+  <li>Jika $\Delta \text{Hari} < 0$, dibuat notifikasi peringatan tugas melewati deadline.</li>
+  <li>Jika $0 \le \Delta \text{Hari} \le 3$, dibuat notifikasi pengingat mendekati batas waktu.</li>
+  <li>Terdapat mekanisme filter anti-duplikasi: sistem memeriksa tabel <code>notifikasi</code> berdasarkan <code>DATE(created_at) = today</code> sehingga notifikasi dengan subjek yang sama tidak dibuat ganda dalam satu hari.</li>
+  <li>Pengguna dapat menandai notifikasi telah dibaca melalui dropdown navbar menggunakan request AJAX yang memperbarui nilai <code>is_read = 1</code>.</li>
+</ol>
+
+<!-- ==================== MODUL 8 & 9 ==================== -->
+<h2>MODUL 8 &amp; 9: KELOLA PENGGUNA DAN PENGATURAN PROFIL</h2>
+
+<h3>8.1 Kelola Pengguna &amp; Approval Akun (Admin)</h3>
+<p class="no-indent">Pendaftaran mandiri pengguna melalui formulir registrasi menghasilkan status akun = 0 (Pending). Admin LPAIP memiliki halaman kendali di <code>app/admin/kelola_user.php</code> untuk meninjau permohonan. Admin dapat melakukan <b>Setujui (Approve)</b> yang otomatis mengaktifkan akun dan memicu pengiriman email selamat datang via PHPMailer SMTP, atau <b>Tolak (Decline)</b> yang menghapus permohonan tersebut.</p>
+
+<h3>8.2 Pengaturan Profil dan Keamanan Kata Sandi</h3>
+<p class="no-indent">Setiap pengguna dapat memperbarui nama lengkap pada menu <code>app/pages/profile.php</code>. Fitur ubah kata sandi mewajibkan input kata sandi lama yang diverifikasi menggunakan <code>password_verify()</code> sebelum kata sandi baru di-hash dengan <code>password_hash(..., PASSWORD_BCRYPT)</code> dan disimpan ke tabel basis data.</p>
+
+<!-- ==================== STRUKTUR BASIS DATA ==================== -->
+<h2>STRUKTUR DAN RELASI BASIS DATA (DATABASE SCHEME)</h2>
+<p class="no-indent">Sistem menggunakan basis data relasional MySQL bernama <code>db_sim_adhoc</code> yang terdiri atas 7 tabel saling berelasi dengan integritas referensial (Foreign Key Cascade):</p>
+
+<table>
+  <tr>
+    <th style="width: 20%;">Nama Tabel</th>
+    <th style="width: 35%;">Fungsi Utama</th>
+    <th style="width: 45%;">Relasi Kunci (Foreign Key)</th>
+  </tr>
+  <tr>
+    <td><b>users</b></td>
+    <td>Menyimpan identitas personil, role, jabatan struktural, password hash, dan status approval.</td>
+    <td>Primary Key: <code>id</code>.</td>
+  </tr>
+  <tr>
+    <td><b>tim_adhoc</b></td>
+    <td>Menyimpan data Tim Ad Hoc, nomor SK, periode pelaksanaan, dan status keberjalanan tim.</td>
+    <td><code>created_by</code> &rarr; <code>users(id)</code>.</td>
+  </tr>
+  <tr>
+    <td><b>anggota_tim</b></td>
+    <td>Tabel perantara many-to-many antara personil dengan tim serta peran dalam tim.</td>
+    <td><code>tim_id</code> &rarr; <code>tim_adhoc(id)</code><br><code>user_id</code> &rarr; <code>users(id)</code>.</td>
+  </tr>
+  <tr>
+    <td><b>tugas</b></td>
+    <td>Menyimpan rincian penugasan, PIC penerima tugas, prioritas, status kerja, dan deadline.</td>
+    <td><code>tim_id</code> &rarr; <code>tim_adhoc(id)</code><br><code>assigned_to</code> &rarr; <code>users(id)</code>.</td>
+  </tr>
+  <tr>
+    <td><b>tugas_files</b></td>
+    <td>Menyimpan berkas lampiran hasil pengerjaan tugas (multi-file attachment).</td>
+    <td><code>tugas_id</code> &rarr; <code>tugas(id)</code><br><code>uploader_id</code> &rarr; <code>users(id)</code>.</td>
+  </tr>
+  <tr>
+    <td><b>dokumen</b></td>
+    <td>Menyimpan repositori berkas kegiatan, proposal, berita acara, dan LPJ akhir.</td>
+    <td><code>tim_id</code> &rarr; <code>tim_adhoc(id)</code><br><code>uploader_id</code> &rarr; <code>users(id)</code>.</td>
+  </tr>
+  <tr>
+    <td><b>notifikasi</b></td>
+    <td>Menyimpan riwayat pemberitahuan penugasan dan pengingat deadline per pengguna.</td>
+    <td><code>user_id</code> &rarr; <code>users(id)</code>.</td>
+  </tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== PERSIAPAN SIDANG SKRIPSI ==================== -->
+<h2>PANDUAN JAWABAN PERTANYAAN SIDANG SKRIPSI (FAQ PENGUJI)</h2>
+
+<h3>1. Mengapa memilih metode Evolutionary Prototyping?</h3>
+<p class="no-indent"><b>Jawaban:</b> Karena kebutuhan tata kelola Tim Ad Hoc di LPAIP melibatkan tiga kelompok pengguna (Admin, Ketua, Anggota) yang proses bisnisnya belum pernah dibakukan dalam satu sistem terintegrasi. Metode Evolutionary Prototyping memungkinkan sistem dibangun dari prototipe awal, dievaluasi secara bertahap bersama pengguna, dan disempurnakan secara iteratif hingga menghasilkan sistem final yang benar-benar siap operasional tanpa membuang prototipe awal.</p>
+
+<h3>2. Bagaimana integrasi Goal-Directed Design (GDD) dalam perancangan antarmuka?</h3>
+<p class="no-indent"><b>Jawaban:</b> GDD digunakan untuk memetakan tujuan dan kebutuhan spesifik masing-masing pengguna (user goals). Admin membutuhkan efisiensi administrasi dan pembuatan SK; Ketua Tim membutuhkan kontrol pembagian tugas dan monitoring progres; sedangkan Anggota membutuhkan kejelasan instruksi tugas dan pengingat deadline. Perbedaan tujuan tersebut diterjemahkan ke dalam tata letak navigasi dan informasi antarmuka yang disesuaikan pada dashboard dan modul kerja.</p>
+
+<h3>3. Bagaimana aspek keamanan sistem diimplementasikan?</h3>
+<p class="no-indent"><b>Jawaban:</b> Aspek keamanan dibangun dengan tiga pilar: (1) Perlindungan terhadap SQL Injection menggunakan PDO Prepared Statements asli MySQL; (2) Perlindungan kredensial akun menggunakan algoritma hashing satu arah Bcrypt dengan salt dinamis; dan (3) Penerapan kontrol akses berbasis peran (RBAC) serta isolasi keanggotaan tim pada level server untuk mencegah celah Insecure Direct Object Reference (IDOR).</p>
+
+<h3>4. Mengapa luaran Surat Tugas diunduh dalam format .doc (Word) bukan PDF?</h3>
+<p class="no-indent"><b>Jawaban:</b> Berdasarkan masukan pengguna dan evaluasi administrasi LPAIP UKDW, dokumen Surat Keputusan seringkali memerlukan penyesuaian penomoran surat, klausul konsiderans khusus, atau penggabungan stempel digital sekretariat sebelum diarsipkan secara resmi. Format Word (.doc) memberikan fleksibilitas penyuntingan (editable) namun tetap mempertahankan struktur baku tata naskah dinas universitas.</p>
+
+<br>
+<p style="text-align: center; font-style: italic;">--- Dokumen Panduan Arsitektur &amp; Logika Sistem Selesai ---</p>
+
+</body>
+</html>

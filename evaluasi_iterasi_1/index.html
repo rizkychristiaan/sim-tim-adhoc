@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembar Evaluasi Prototype Figma (Iterasi I) - SIM Tim Ad Hoc LPAIP UKDW</title>
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- File CSS Terpisah -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CONTROL BAR (Alat Bantu & Filter - Tidak ikut tercetak) -->
+    <div class="control-bar no-print">
+        <div class="filter-group">
+            <label for="filterRole" style="font-weight: 600;">Pilih Peran Responden:</label>
+            <select id="filterRole" class="filter-select">
+                <option value="all">Semua Peran (11 Skenario)</option>
+                <option value="admin">Hanya Admin LPAIP (4 Skenario)</option>
+                <option value="ketua">Hanya Ketua Tim (3 Skenario)</option>
+                <option value="anggota">Hanya Anggota Tim (4 Skenario)</option>
+            </select>
+        </div>
+        <div style="display: flex; gap: 8px;">
+            <button type="button" id="btnReset" class="btn btn-secondary">
+                🔄 Kosongkan Isian
+            </button>
+            <button type="button" id="btnPrint" class="btn btn-primary">
+                🖨️ Cetak Lembar Evaluasi (Ctrl + P)
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTAINER LEMBAR PENGUJIAN KERTAS A4 -->
+    <div class="container">
+        
+        <!-- KOP FORM RESMI -->
+        <header class="header">
+            <h3>UNIVERSITAS KRISTEN DUTA WACANA</h3>
+            <h4>LEMBAGA PENGEMBANGAN AKADEMIK DAN INOVASI PEMBELAJARAN (LPAIP)</h4>
+            <p>Skripsi: Sistem Informasi Manajemen Tim Ad Hoc Berbasis Web (Goal-Directed Design &amp; Evolutionary Prototyping)</p>
+        </header>
+
+        <!-- JUDUL DOKUMEN -->
+        <div class="title-box">
+            <h4>LEMBAR PENCATATAN EVALUASI PROTOTYPE FIGMA (ITERASI I)</h4>
+            <small>Dokumen Lampiran Sub-bab 3.4.5 Refinement — Peneliti: Rizky Chrales Christiaan (NIM: 71220902)</small>
+        </div>
+
+        <!-- FORM DATA IDENTITAS RESPONDEN -->
+        <section class="meta-box">
+            <div class="meta-grid">
+                <div class="meta-row">
+                    <span class="meta-label">Nama Responden</span>
+                    <input type="text" class="meta-value meta-value-input" style="border:none; border-bottom:1px dotted #94a3b8; outline:none; background:transparent;" placeholder="................................................................">
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Tanggal Pengujian</span>
+                    <input type="text" class="meta-value meta-value-input" style="border:none; border-bottom:1px dotted #94a3b8; outline:none; background:transparent;" placeholder="....................................................">
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">NIP / NIM</span>
+                    <input type="text" class="meta-value meta-value-input" style="border:none; border-bottom:1px dotted #94a3b8; outline:none; background:transparent;" placeholder="................................................................">
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Peran Pengguna</span>
+                    <div style="display: flex; gap: 10px; font-size: 8pt;">
+                        <label><input type="radio" name="meta_role" value="admin"> Admin LPAIP</label>
+                        <label><input type="radio" name="meta_role" value="ketua"> Ketua Tim</label>
+                        <label><input type="radio" name="meta_role" value="anggota"> Anggota</label>
+                    </div>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Jabatan / Unit Kerja</span>
+                    <input type="text" class="meta-value meta-value-input" style="border:none; border-bottom:1px dotted #94a3b8; outline:none; background:transparent;" placeholder="................................................................">
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Waktu Pengujian</span>
+                    <input type="text" class="meta-value meta-value-input" style="border:none; border-bottom:1px dotted #94a3b8; outline:none; background:transparent;" placeholder="............ s.d. ............ WIB">
+                </div>
+            </div>
+        </section>
+
+        <!-- PETUNJUK OBSERVASI EVALUASI -->
+        <div class="instruction-box">
+            <strong>Petunjuk Penguji (Peneliti):</strong>
+            1. Bacakan kalimat instruksi tugas secara langsung kepada responden tanpa mengarahkan langkah tombol.<br>
+            2. Amati responden saat mencoba prototype Figma.<br>
+            3. Beri tanda centang [✓] pada status: <em>Berhasil tanpa bantuan</em>, <em>Berhasil dengan bantuan</em>, atau <em>Belum berhasil</em>.<br>
+            4. Catat kendala yang dialami responden serta komentar dan umpan baliknya.
+        </div>
+
+        <!-- BAR RINGKASAN SKOR OTOMATIS (Dihitung oleh script.js) -->
+        <div class="score-summary-bar no-print">
+            <div>
+                <strong>Tugas Terisi:</strong> <span id="statTotal">0 / 11</span> |
+                <span style="color:#16a34a; font-weight:600;">Mandiri:</span> <span id="statMandiri">0</span> |
+                <span style="color:#d97706; font-weight:600;">Dibantu:</span> <span id="statDibantu">0</span> |
+                <span style="color:#dc2626; font-weight:600;">Gagal:</span> <span id="statGagal">0</span>
+            </div>
+            <div>
+                <strong>Tingkat Keberhasilan (Success Rate):</strong>
+                <span id="statPersen" class="score-badge">0%</span>
+            </div>
+        </div>
+
+        <!-- TABEL 3.9 PENCATATAN EVALUASI SESUAI NASKAH SKRIPSI -->
+        <h5 class="section-title">Tabel 3.9 Pencatatan Evaluasi Prototype Figma</h5>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 5%;" class="text-center">No</th>
+                    <th style="width: 13%;">Kode &amp; Peran</th>
+                    <th style="width: 32%;">Instruksi Skenario Tugas (Dibacakan ke Pengguna)</th>
+                    <th style="width: 18%;">Status Penyelesaian (Pilih Salah Satu)</th>
+                    <th style="width: 16%;">Kendala yang Ditemukan (Observasi)</th>
+                    <th style="width: 16%;">Umpan Balik Pengguna (Masukan Langsung)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 1. ADMIN LPAIP -->
+                <tr class="scenario-row" data-role="admin">
+                    <td class="text-center fw-bold row-number">1</td>
+                    <td>
+                        <strong>F-ADM-01</strong><br>
+                        <span class="badge-role badge-admin">Admin LPAIP</span>
+                    </td>
+                    <td>
+                        <strong>"Anda login sebagai Admin LPAIP. Silakan buka menu daftar tim untuk melihat seluruh Tim Ad Hoc yang sedang aktif."</strong><br>
+                        <small class="text-muted">Target: Menemukan menu Kelola Tim Ad Hoc melalui navigasi.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_1" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_1" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_1" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+                <tr class="scenario-row" data-role="admin">
+                    <td class="text-center fw-bold row-number">2</td>
+                    <td>
+                        <strong>F-ADM-02</strong><br>
+                        <span class="badge-role badge-admin">Admin LPAIP</span>
+                    </td>
+                    <td>
+                        <strong>"LPAIP akan membentuk tim baru. Silakan klik tombol untuk membuat Tim Ad Hoc baru dan tunjukkan di mana mengisi data tim."</strong><br>
+                        <small class="text-muted">Target: Menemukan tombol 'Tambah Tim' dan form pembentukan tim.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_2" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_2" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_2" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+                <tr class="scenario-row" data-role="admin">
+                    <td class="text-center fw-bold row-number">3</td>
+                    <td>
+                        <strong>F-ADM-03</strong><br>
+                        <span class="badge-role badge-admin">Admin LPAIP</span>
+                    </td>
+                    <td>
+                        <strong>"SK Rektorat telah terbit. Silakan buka salah satu tim, lalu masukkan 1 nama dosen ke dalam susunan personil tim tersebut."</strong><br>
+                        <small class="text-muted">Target: Menuju Tab 2 (Personil) dan membuka form '+ Tambah Personil Anggota'.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_3" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_3" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_3" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+                <tr class="scenario-row" data-role="admin">
+                    <td class="text-center fw-bold row-number">4</td>
+                    <td>
+                        <strong>F-ADM-04</strong><br>
+                        <span class="badge-role badge-admin">Admin LPAIP</span>
+                    </td>
+                    <td>
+                        <strong>"Silakan cari tombol untuk mengunduh draf Surat Permohonan SK (.doc) atau melihat berkas PDF SK Resmi tim."</strong><br>
+                        <small class="text-muted">Target: Menemukan tombol 'Unduh Permohonan SK' atau Tab 1 Surat SK.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_4" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_4" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_4" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+
+                <!-- 2. KETUA TIM -->
+                <tr class="scenario-row" data-role="ketua">
+                    <td class="text-center fw-bold row-number">5</td>
+                    <td>
+                        <strong>F-KET-01</strong><br>
+                        <span class="badge-role badge-ketua">Ketua Tim</span>
+                    </td>
+                    <td>
+                        <strong>"Di Dashboard, temukan tim di mana Anda bertindak sebagai Ketua, lalu klik untuk masuk ke ruang kerja tim tersebut."</strong><br>
+                        <small class="text-muted">Target: Menemukan tim di dashboard dan membuka ruang kerja tim.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_5" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_5" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_5" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+                <tr class="scenario-row" data-role="ketua">
+                    <td class="text-center fw-bold row-number">6</td>
+                    <td>
+                        <strong>F-KET-02</strong><br>
+                        <span class="badge-role badge-ketua">Ketua Tim</span>
+                    </td>
+                    <td>
+                        <strong>"Di dalam ruang kerja tim (Tab Penugasan), buatlah 1 tugas baru untuk anggota lengkap dengan batas waktunya (deadline)."</strong><br>
+                        <small class="text-muted">Target: Menuju Tab 3, klik form penugasan, memilih PIC dan deadline.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_6" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_6" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_6" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+                <tr class="scenario-row" data-role="ketua">
+                    <td class="text-center fw-bold row-number">7</td>
+                    <td>
+                        <strong>F-KET-03</strong><br>
+                        <span class="badge-role badge-ketua">Ketua Tim</span>
+                    </td>
+                    <td>
+                        <strong>"Tunjukkan di mana Anda bisa melihat apakah tugas anggota sudah selesai atau belum, serta persentase progres capaian tim (%)."</strong><br>
+                        <small class="text-muted">Target: Menemukan bilah progress capaian tim (%) dan status centang tugas.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_7" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_7" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_7" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+
+                <!-- 3. ANGGOTA TIM -->
+                <tr class="scenario-row" data-role="anggota">
+                    <td class="text-center fw-bold row-number">8</td>
+                    <td>
+                        <strong>F-ANG-01</strong><br>
+                        <span class="badge-role badge-anggota">Anggota Tim</span>
+                    </td>
+                    <td>
+                        <strong>"Masuk ke tim Anda, buka Tab Penugasan Kerja, lalu temukan tugas yang diberikan khusus atas nama Anda."</strong><br>
+                        <small class="text-muted">Target: Membuka Tab 3 dan mengidentifikasi baris tugas sesuai nama sendiri.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_8" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_8" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_8" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+                <tr class="scenario-row" data-role="anggota">
+                    <td class="text-center fw-bold row-number">9</td>
+                    <td>
+                        <strong>F-ANG-02</strong><br>
+                        <span class="badge-role badge-anggota">Anggota Tim</span>
+                    </td>
+                    <td>
+                        <strong>"Pekerjaan tugas Anda selesai. Silakan klik tombol untuk mengunggah file bukti tugas agar statusnya berubah Selesai."</strong><br>
+                        <small class="text-muted">Target: Menemukan tombol 'Kirim Hasil Tugas' dan form upload bukti kerja.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_9" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_9" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_9" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+                <tr class="scenario-row" data-role="anggota">
+                    <td class="text-center fw-bold row-number">10</td>
+                    <td>
+                        <strong>F-ANG-03</strong><br>
+                        <span class="badge-role badge-anggota">Anggota Tim</span>
+                    </td>
+                    <td>
+                        <strong>"Buka Tab Repositori &amp; LPJ, lalu cari di mana Anda bisa mengunduh berkas LPJ atau dokumen pendukung tim."</strong><br>
+                        <small class="text-muted">Target: Menuju Tab 4 dan menemukan tombol unduh berkas LPJ / dokumen.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_10" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_10" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_10" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+                <tr class="scenario-row" data-role="anggota">
+                    <td class="text-center fw-bold row-number">11</td>
+                    <td>
+                        <strong>F-ANG-04</strong><br>
+                        <span class="badge-role badge-anggota">Anggota Tim</span>
+                    </td>
+                    <td>
+                        <strong>"Tunjukkan di mana Anda bisa melihat tanggal deadline tugas Anda dan di mana letak lonceng notifikasinya."</strong><br>
+                        <small class="text-muted">Hasil yang Diharapkan: Menemukan kolom tanggal deadline dan ikon lonceng notifikasi.</small>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_11" value="mandiri"> Berhasil tanpa bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_11" value="dibantu"> Berhasil dengan bantuan</label>
+                            <label class="checkbox-item"><input type="radio" class="status-radio" name="status_11" value="gagal"> Belum berhasil</label>
+                        </div>
+                    </td>
+                    <td><textarea class="notes-area" placeholder="Catatan kendala..."></textarea></td>
+                    <td><textarea class="notes-area" placeholder="Komentar responden..."></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- PERTANYAAN WAWANCARA KUALITATIF -->
+        <h5 class="section-title">Umpan Balik Kualitatif Pengguna (Wawancara Penutup)</h5>
+        <div style="font-size: 8.5pt; color: #334155; margin-bottom: 12px;">
+            <p style="margin: 0 0 3px 0;"><strong>1. Kendala Navigasi &amp; Alur:</strong> <em>"Saat mencoba tadi, adakah tombol atau menu yang posisinya membingungkan atau sempat sulit dicari? Jika ada, di bagian mana?"</em></p>
+            <textarea class="notes-area" style="margin-bottom: 8px;" placeholder="Catatan jawaban responden..."></textarea>
+
+            <p style="margin: 0 0 3px 0;"><strong>2. Kejelasan Bahasa &amp; Label Tombol:</strong> <em>"Apakah istilah pada tombol dan formulir (seperti 'Kirim Hasil Tugas', 'Permohonan SK', 'LPJ') sudah langsung dipahami, atau ada istilah yang janggal?"</em></p>
+            <textarea class="notes-area" style="margin-bottom: 8px;" placeholder="Catatan jawaban responden..."></textarea>
+
+            <p style="margin: 0 0 3px 0;"><strong>3. Keterbacaan Visual:</strong> <em>"Bagaimana dengan warna merah maroon UKDW dan ukuran teksnya? Apakah ada tulisan yang terasa kekecilan atau warnanya kurang kontras?"</em></p>
+            <textarea class="notes-area" style="margin-bottom: 8px;" placeholder="Catatan jawaban responden..."></textarea>
+
+            <p style="margin: 0 0 3px 0;"><strong>4. Alur Kerja Tim Ad Hoc:</strong> <em>"Menurut pengalaman Anda dalam kepanitiaan di UKDW, apakah pembagian 4 Tab (SK, Personil, Tugas, LPJ) sudah pas, atau ada alur penting yang terlewat?"</em></p>
+            <textarea class="notes-area" placeholder="Catatan jawaban responden..."></textarea>
+        </div>
+
+        <!-- TANDA TANGAN VALIDASI -->
+        <div class="signature-box">
+            <div class="signature-col">
+                <span>Responden Pengujian,</span>
+                <div style="height: 48px;"></div>
+                <span style="border-top: 1px solid #64748b; display: block; padding-top: 4px;">
+                    ( ............................................................ )
+                </span>
+            </div>
+            <div class="signature-col">
+                <span>Yogyakarta, ............................. 2026<br>Peneliti Mahasiswa,</span>
+                <div style="height: 36px;"></div>
+                <span style="border-top: 1px solid #64748b; display: block; padding-top: 4px; font-weight: 600;">
+                    Rizky Chrales Christiaan<br>NIM: 71220902
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- File JavaScript Terpisah -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tambah Anggota Tim - Wireframe</title>
+<style>
+  :root{--maroon:#6e1a2c;--maroon-d:#561322;--line:#d9dde3;--text:#1f2430;--muted:#5b6472;--bg:#8a8a8e;--soft:#f3f4f6;--red:#d32f2f}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--text);background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px}
+  .modal{width:560px;max-width:100%;background:#fff;border-radius:10px;overflow:visible;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  .head{background:var(--maroon);color:#fff;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;border-radius:10px 10px 0 0}
+  .head h2{margin:0;font-size:20px;font-weight:700;display:flex;gap:10px;align-items:center}
+  .close{background:none;border:0;color:#fff;font-size:26px;line-height:1;cursor:pointer}
+  .body{padding:22px}
+  label.lbl{display:block;font-size:14px;font-weight:600;margin:0 0 8px}
+  .req{color:var(--red)}
+  .tabs{display:flex;border:1px solid var(--maroon);border-radius:4px;overflow:hidden;margin-bottom:20px}
+  .tab{flex:1;padding:12px;text-align:center;font-size:14px;font-weight:600;background:#fff;color:var(--text);border:0;cursor:pointer;font-family:inherit}
+  .tab.active{background:var(--maroon);color:#fff}
+  .field{margin-bottom:18px;position:relative}
+  .dd{position:relative}
+  .dd-btn{width:100%;text-align:left;font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text);display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+  .dd-btn.placeholder{color:var(--muted)}
+  .dd.open .dd-btn{border-color:#5b9bd5;box-shadow:0 0 0 3px rgba(91,155,213,.25)}
+  .chev{width:10px;height:10px;border-right:2px solid var(--text);border-bottom:2px solid var(--text);transform:rotate(45deg) translateY(-2px);transition:transform .15s}
+  .dd.open .chev{transform:rotate(-135deg) translateY(-2px)}
+  .dd-list{visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s;position:absolute;left:0;right:0;top:calc(100% + 4px);background:#fff;border:1px solid var(--line);box-shadow:0 8px 20px rgba(0,0,0,.18);z-index:20;max-height:240px;overflow:auto;border-radius:4px}
+  .dd.open .dd-list{visibility:visible;opacity:1;transform:translateY(0);transition-delay:0s}
+  .dd-search{width:calc(100% - 16px);margin:8px;padding:9px 10px;border:1px solid var(--line);border-radius:6px;font:inherit;font-size:14px}
+  .opt{padding:12px 14px;font-size:16px;cursor:pointer}
+  .opt:hover,.opt.sel{background:#1a63d6;color:#fff}
+  .opt small{display:block;font-size:12px;opacity:.75}
+  .hint{font-size:13px;color:var(--muted);margin-top:8px}
+  input.txt{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:15px}
+  .pane{display:none}.pane.active{display:block}
+  .foot{display:flex;justify-content:flex-end;gap:10px;padding:0 22px 22px}
+  .btn{font:inherit;font-size:15px;font-weight:600;padding:11px 20px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer}
+  .btn.primary{background:var(--maroon);border-color:var(--maroon);color:#fff}
+  .btn.primary:hover{background:var(--maroon-d)}
+  .none{display:none;padding:12px 14px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="modal" role="dialog" aria-labelledby="ttl">
+  <div class="head">
+    <h2 id="ttl">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M19 8v6M16 11h6"/></svg>
+      Tambah Anggota Tim
+    </h2>
+    <button class="close" aria-label="Tutup">&times;</button>
+  </div>
+
+  <div class="body">
+    <label class="lbl">Pilih Sumber Personil:</label>
+    <div class="tabs">
+      <button class="tab active" data-pane="p1">User Terdaftar</button>
+      <button class="tab" data-pane="p2">Buat User Baru</button>
+    </div>
+
+    <!-- PANE 1: user terdaftar -->
+    <div class="pane active" id="p1">
+      <div class="field">
+        <label class="lbl">Pilih Personil / Staf LPAIP <span class="req">*</span></label>
+        <div class="dd" id="ddPersonil">
+          <button type="button" class="dd-btn placeholder"><span class="val">-- Ketik untuk Cari Nama / NIP / NIM --</span><i class="chev"></i></button>
+          <div class="dd-list">
+            <input class="dd-search" placeholder="Cari nama, NIP/NIM, atau role...">
+            <div class="opt" data-v="a"><span>Budi Santoso, M.Kom<small>NIP 198001012005011001 · Dosen</small></span></div>
+            <div class="opt" data-v="b"><span>Siti Rahmawati, S.T.<small>NIP 198505152010012002 · Staf LPAIP</small></span></div>
+            <div class="opt" data-v="c"><span>Andi Pratama<small>NIM 71220902 · Mahasiswa</small></span></div>
+            <div class="opt" data-v="d"><span>Dewi Lestari, M.Pd<small>NIP 197912202003122001 · Dosen</small></span></div>
+            <div class="none">Tidak ada hasil</div>
+          </div>
+        </div>
+        <div class="hint">&#128269; Ketik nama, NIP/NIM, atau role untuk memfilter pilihan secara instan.</div>
+      </div>
+    </div>
+
+    <!-- PANE 2: buat user baru -->
+    <div class="pane" id="p2">
+      <div class="field"><label class="lbl">Nama Lengkap <span class="req">*</span></label><input class="txt" placeholder="Nama lengkap"></div>
+      <div class="field"><label class="lbl">NIP / NIM <span class="req">*</span></label><input class="txt" placeholder="NIP atau NIM"></div>
+      <div class="field"><label class="lbl">Email <span class="req">*</span></label><input class="txt" placeholder="nama@kampus.ac.id"></div>
+    </div>
+
+    <!-- Jabatan -->
+    <div class="field">
+      <label class="lbl">Jabatan dalam Tim Ad Hoc <span class="req">*</span></label>
+      <div class="dd" id="ddJabatan">
+        <button type="button" class="dd-btn"><span class="val">Anggota</span><i class="chev"></i></button>
+        <div class="dd-list">
+          <div class="opt sel" data-v="Anggota">Anggota</div>
+          <div class="opt" data-v="Ketua Tim">Ketua Tim</div>
+          <div class="opt" data-v="Sekretaris">Sekretaris</div>
+          <div class="opt" data-v="Bendahara">Bendahara</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <button class="btn">Batal</button>
+    <button class="btn primary">Tambah Anggota</button>
+  </div>
+</div>
+
+<script>
+  // Dropdown generic
+  document.querySelectorAll('.dd').forEach(function(dd){
+    var btn = dd.querySelector('.dd-btn');
+    var val = dd.querySelector('.val');
+    var opts = dd.querySelectorAll('.opt');
+    var search = dd.querySelector('.dd-search');
+    var none = dd.querySelector('.none');
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      document.querySelectorAll('.dd.open').forEach(function(o){ if(o!==dd) o.classList.remove('open'); });
+      dd.classList.toggle('open');
+      if(search && dd.classList.contains('open')) search.focus();
+    });
+
+    opts.forEach(function(o){
+      o.addEventListener('click', function(){
+        opts.forEach(function(x){ x.classList.remove('sel'); });
+        o.classList.add('sel');
+        var sp = o.querySelector('span'); val.textContent = sp ? sp.childNodes[0].textContent : o.textContent.trim();
+        btn.classList.remove('placeholder');
+        dd.classList.remove('open');
+        if(search){ search.value=''; opts.forEach(function(x){ x.style.display=''; }); if(none) none.style.display='none'; }
+      });
+    });
+
+    if(search){
+      search.addEventListener('click', function(e){ e.stopPropagation(); });
+      search.addEventListener('input', function(){
+        var q = search.value.toLowerCase(), shown = 0;
+        opts.forEach(function(o){
+          var hit = o.textContent.toLowerCase().indexOf(q) > -1;
+          o.style.display = hit ? '' : 'none';
+          if(hit) shown++;
+        });
+        none.style.display = shown ? 'none' : 'block';
+      });
+    }
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.dd.open').forEach(function(o){ o.classList.remove('open'); });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') document.querySelectorAll('.dd.open').forEach(function(o){ o.classList.remove('open'); });
+  });
+
+  // Tabs
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
+      document.querySelectorAll('.pane').forEach(function(p){ p.classList.remove('active'); });
+      t.classList.add('active');
+      document.getElementById(t.dataset.pane).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

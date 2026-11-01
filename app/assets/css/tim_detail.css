@@ -1,0 +1,33 @@
+/**
+ * ==============================================================================
+ * FILE: app/assets/css/tim_detail.css
+ * HALAMAN: Ruang Kerja Terpadu Tim Ad Hoc (4 Tab)
+ * ==============================================================================
+ */
+
+#timTab {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+}
+
+#timTab .nav-link {
+    color: #475569;
+    font-size: 0.92rem;
+    transition: all 0.2s ease-in-out;
+    border: none;
+}
+
+#timTab .nav-link:hover {
+    color: #6b0c22;
+    background-color: #fdf2f4;
+}
+
+#timTab .nav-link.active {
+    background-color: #6b0c22 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 6px -1px rgba(107, 12, 34, 0.25);
+}
+
+#timTab .nav-link.active i {
+    color: #facc15 !important;
+}

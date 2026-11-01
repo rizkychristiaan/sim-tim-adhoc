@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 759.6057499999997 2475.818" width="759.6057499999997" height="2475.818" style="--bg:#1F1F1F;--fg:#CCCCCC;--line:#CCCCCC;--accent:#0078D4;--muted:#CCCCCCCC;--surface:#181818;--border:#CCCCCC;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<g class="subgraph" data-id="FASE1" data-label="1. Manajemen Akun Pengguna">
+  <rect x="40" y="40" width="508.4719999999998" height="546.619" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="40" width="508.4719999999998" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="52" y="54" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">1. Manajemen Akun Pengguna</text>
+</g>
+<g class="subgraph" data-id="FASE2" data-label="2. Pembentukan Tim &amp; Pengesahan SK">
+  <rect x="242.5889999999999" y="646.619" width="328.854" height="385.40000000000003" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="242.5889999999999" y="646.619" width="328.854" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="254.5889999999999" y="660.619" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">2. Pembentukan Tim &amp; Pengesahan SK</text>
+</g>
+<g class="subgraph" data-id="FASE3" data-label="3. Plotting Personil Tim Resmi">
+  <rect x="234.80849999999992" y="1092.0190000000002" width="344.41499999999996" height="249.40000000000003" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="234.80849999999992" y="1092.0190000000002" width="344.41499999999996" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="246.80849999999992" y="1106.0190000000002" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">3. Plotting Personil Tim Resmi</text>
+</g>
+<g class="subgraph" data-id="FASE4" data-label="4. Supervisi Pelaksanaan Kerja">
+  <rect x="248.51699999999994" y="1401.4190000000003" width="316.99799999999993" height="300.5" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="248.51699999999994" y="1401.4190000000003" width="316.99799999999993" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="260.51699999999994" y="1415.4190000000003" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">4. Supervisi Pelaksanaan Kerja</text>
+</g>
+<g class="subgraph" data-id="FASE5" data-label="5. Penerimaan LPJ &amp; Pengarsipan">
+  <rect x="103.68874999999997" y="1761.9190000000003" width="615.9169999999998" height="673.899" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="103.68874999999997" y="1761.9190000000003" width="615.9169999999998" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="115.68874999999997" y="1775.9190000000003" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">5. Penerimaan LPJ &amp; Pengarsipan</text>
+</g>
+<polyline class="edge" data-from="D" data-to="F" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,570.619 407.0159999999999,690.619" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="I" data-to="J" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.01599999999996,1016.019 407.01599999999996,1136.0190000000002" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="K" data-to="L" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,1325.4190000000003 407.0159999999999,1445.4190000000003" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="N" data-to="O" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,1685.9190000000003 407.0159999999999,1805.9190000000003" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="A" data-to="B" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="280.8979999999999,120.9 280.8979999999999,168.9" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="B" data-to="C" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="280.8979999999999,205.8 280.8979999999999,253.8" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="C" data-to="D" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Ya" points="305.3511666666666,376.06583333333333 305.3511666666666,412.519 407.0159999999999,412.519 407.0159999999999,516.819" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="C" data-to="E" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Tidak" points="256.44483333333324,376.06583333333333 256.44483333333324,412.519 154.77999999999997,412.519 154.77999999999997,516.819" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="F" data-to="G" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,744.4190000000001 407.0159999999999,792.4190000000001" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="G" data-to="H" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,829.3190000000001 407.0159999999999,877.3190000000001" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="H" data-to="I" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,914.219 407.0159999999999,962.219" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="J" data-to="K" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,1223.6190000000001 407.0159999999999,1271.6190000000001" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="L" data-to="M" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,1482.3190000000004 407.0159999999999,1530.3190000000004" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="M" data-to="N" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,1584.1190000000004 407.0159999999999,1632.1190000000004" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="O" data-to="P" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,1842.8190000000004 407.0159999999999,1890.8190000000004" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="P" data-to="Q" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="407.0159999999999,1927.7190000000003 407.0159999999999,1975.7190000000003" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Q" data-to="R" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Ya" points="441.3491666666665,2147.3848333333335 441.3491666666665,2193.7180000000003 559.9952499999998,2193.7180000000003 559.9952499999998,2298.018" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="R" data-to="S" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="559.9952499999998,2334.9180000000006 559.9952499999998,2382.9180000000006" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Q" data-to="T" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Perlu Revisi" points="372.68283333333324,2147.3848333333335 372.68283333333324,2193.7180000000003 254.03674999999993,2193.7180000000003 254.03674999999993,2298.018" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<g class="edge-label" data-from="C" data-to="D" data-label="Ya">
+  <rect x="391.5159999999999" y="443.519" width="30.718000000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="406.8749999999999" y="458.669" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Ya</text>
+</g>
+<g class="edge-label" data-from="C" data-to="E" data-label="Tidak">
+  <rect x="132.27999999999994" y="443.519" width="44.974" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="154.76699999999994" y="458.669" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Tidak</text>
+</g>
+<g class="edge-label" data-from="Q" data-to="R" data-label="Ya">
+  <rect x="544.4952499999998" y="2224.7180000000003" width="30.718000000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="559.8542499999999" y="2239.8680000000004" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Ya</text>
+</g>
+<g class="edge-label" data-from="Q" data-to="T" data-label="Perlu Revisi">
+  <rect x="216.03674999999993" y="2224.7180000000003" width="75.26800000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="253.67074999999994" y="2239.8680000000004" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Perlu Revisi</text>
+</g>
+<g class="node" data-id="A" data-label="Calon Pengguna Mendaftar Mandiri / Register" data-shape="rectangle">
+  <rect x="127.28399999999999" y="84" width="307.2279999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="280.8979999999999" y="102.45" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Calon Pengguna Mendaftar Mandiri / Register</text>
+</g>
+<g class="node" data-id="B" data-label="Admin Meninjau Data NIP, Nama, Gelar, Unit Kerja" data-shape="rectangle">
+  <rect x="119.13299999999998" y="168.9" width="323.5299999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="280.8979999999999" y="187.35000000000002" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Admin Meninjau Data NIP, Nama, Gelar, Unit Kerja</text>
+</g>
+<g class="node" data-id="C" data-label="Setujui Akun?" data-shape="diamond">
+  <polygon points="280.8979999999999,253.79999999999998 354.25749999999994,327.1595 280.8979999999999,400.519 207.5384999999999,327.1595" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="280.8979999999999" y="327.1595" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Setujui Akun?</text>
+</g>
+<g class="node" data-id="D" data-label="Aktifkan Akun (Status = 1)
+Sistem Kirim Email Notifikasi Aktivasi" data-shape="rectangle">
+  <rect x="281.55999999999995" y="516.819" width="250.9119999999999" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.0159999999999" y="543.7189999999999" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="407.0159999999999" dy="-3.9000000000000012">Aktifkan Akun (Status = 1)</tspan><tspan x="407.0159999999999" dy="16.900000000000002">Sistem Kirim Email Notifikasi Aktivasi</tspan></text>
+</g>
+<g class="node" data-id="E" data-label="Tolak / Hapus Pendaftaran" data-shape="rectangle">
+  <rect x="56" y="516.819" width="197.55999999999995" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="154.77999999999997" y="535.269" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Tolak / Hapus Pendaftaran</text>
+</g>
+<g class="node" data-id="F" data-label="Admin Membuat Tim Ad Hoc Baru
+(Nama Tim, Periode Kerja, Deskripsi)" data-shape="rectangle">
+  <rect x="279.33699999999993" y="690.619" width="255.35799999999995" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.0159999999999" y="717.519" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="407.0159999999999" dy="-3.9000000000000012">Admin Membuat Tim Ad Hoc Baru</tspan><tspan x="407.0159999999999" dy="16.900000000000002">(Nama Tim, Periode Kerja, Deskripsi)</tspan></text>
+</g>
+<g class="node" data-id="G" data-label="Generasi Draf Permohonan SK Word (.doc)" data-shape="rectangle">
+  <rect x="261.5529999999999" y="792.4190000000001" width="290.926" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.01599999999985" y="810.8690000000001" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Generasi Draf Permohonan SK Word (.doc)</text>
+</g>
+<g class="node" data-id="H" data-label="Proses Legalitas SK di Rektorat UKDW" data-shape="rectangle">
+  <rect x="272.66799999999995" y="877.3190000000001" width="268.6959999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.0159999999999" y="895.7690000000001" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Proses Legalitas SK di Rektorat UKDW</text>
+</g>
+<g class="node" data-id="I" data-label="Admin Unggah File SK Resmi Rektorat (PDF)
+di Tab 1: Surat SK" data-shape="rectangle">
+  <rect x="258.58899999999994" y="962.219" width="296.854" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.01599999999996" y="989.119" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="407.01599999999996" dy="-3.9000000000000012">Admin Unggah File SK Resmi Rektorat (PDF)</tspan><tspan x="407.01599999999996" dy="16.900000000000002">di Tab 1: Surat SK</tspan></text>
+</g>
+<g class="node" data-id="J" data-label="Admin Menetapkan Susunan Personil di Tab 2:
+• Menunjuk Ketua Tim
+• Menunjuk Sekretaris / Bendahara
+• Menunjuk Anggota Tim" data-shape="rectangle">
+  <rect x="250.80849999999992" y="1136.0190000000002" width="312.41499999999996" height="87.60000000000001" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.0159999999999" y="1179.8190000000002" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="407.0159999999999" dy="-20.8">Admin Menetapkan Susunan Personil di Tab 2:</tspan><tspan x="407.0159999999999" dy="16.900000000000002">• Menunjuk Ketua Tim</tspan><tspan x="407.0159999999999" dy="16.900000000000002">• Menunjuk Sekretaris / Bendahara</tspan><tspan x="407.0159999999999" dy="16.900000000000002">• Menunjuk Anggota Tim</tspan></text>
+</g>
+<g class="node" data-id="K" data-label="Personil Otomatis Menerima Notifikasi
+&amp; Tim Muncul di Dashboard Masing-Masing" data-shape="rectangle">
+  <rect x="260.4414999999999" y="1271.6190000000001" width="293.149" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.0159999999999" y="1298.5190000000002" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="407.0159999999999" dy="-3.9000000000000012">Personil Otomatis Menerima Notifikasi</tspan><tspan x="407.0159999999999" dy="16.900000000000002">&amp; Tim Muncul di Dashboard Masing-Masing</tspan></text>
+</g>
+<g class="node" data-id="L" data-label="Ketua Tim Membagi Tugas Kerja di Tab 3" data-shape="rectangle">
+  <rect x="268.2219999999999" y="1445.4190000000003" width="277.58799999999997" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.0159999999999" y="1463.8690000000004" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Ketua Tim Membagi Tugas Kerja di Tab 3</text>
+</g>
+<g class="node" data-id="M" data-label="Admin Memantau Capaian Progres (%)
+dan Bukti Kerja Seluruh Tim di Dashboard" data-shape="rectangle">
+  <rect x="264.51699999999994" y="1530.3190000000004" width="284.99799999999993" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.0159999999999" y="1557.2190000000005" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="407.0159999999999" dy="-3.9000000000000012">Admin Memantau Capaian Progres (%)</tspan><tspan x="407.0159999999999" dy="16.900000000000002">dan Bukti Kerja Seluruh Tim di Dashboard</tspan></text>
+</g>
+<g class="node" data-id="N" data-label="Sistem Otomatis Kirim Email Reminder
+Deadline (H-3, H-1, Hari H, Overdue)" data-shape="rectangle">
+  <rect x="279.33699999999993" y="1632.1190000000004" width="255.35799999999995" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.0159999999999" y="1659.0190000000005" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="407.0159999999999" dy="-3.9000000000000012">Sistem Otomatis Kirim Email Reminder</tspan><tspan x="407.0159999999999" dy="16.900000000000002">Deadline (H-3, H-1, Hari H, Overdue)</tspan></text>
+</g>
+<g class="node" data-id="O" data-label="Ketua Tim Mengunggah Berkas LPJ Akhir di Tab 4" data-shape="rectangle">
+  <rect x="238.21149999999994" y="1805.9190000000003" width="337.6089999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.0159999999999" y="1824.3690000000004" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Ketua Tim Mengunggah Berkas LPJ Akhir di Tab 4</text>
+</g>
+<g class="node" data-id="P" data-label="Admin Meninjau Rekap LPJ di Menu Repositori" data-shape="rectangle">
+  <rect x="249.69699999999995" y="1890.8190000000004" width="314.63799999999986" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.01599999999985" y="1909.2690000000005" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Admin Meninjau Rekap LPJ di Menu Repositori</text>
+</g>
+<g class="node" data-id="Q" data-label="LPJ &amp; Tugas Lengkap?" data-shape="diamond">
+  <polygon points="407.01599999999985,1975.7190000000005 510.01549999999986,2078.7185000000004 407.01599999999985,2181.7180000000003 304.01649999999984,2078.7185000000004" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="407.01599999999985" y="2078.7185000000004" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">LPJ &amp; Tugas Lengkap?</text>
+</g>
+<g class="node" data-id="R" data-label="Admin / Ketua Tandai Status Tim: SELESAI" data-shape="rectangle">
+  <rect x="416.3847499999999" y="2298.018" width="287.2209999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="559.9952499999998" y="2316.468" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Admin / Ketua Tandai Status Tim: SELESAI</text>
+</g>
+<g class="node" data-id="S" data-label="Tim &amp; Seluruh Berkas Diarsipkan Resmi" data-shape="rectangle">
+  <rect x="423.05374999999987" y="2382.9180000000006" width="273.8829999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="559.9952499999998" y="2401.3680000000004" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Tim &amp; Seluruh Berkas Diarsipkan Resmi</text>
+</g>
+<g class="node" data-id="T" data-label="Admin Meminta Perbaikan ke Ketua Tim" data-shape="rectangle">
+  <rect x="119.68874999999997" y="2298.018" width="268.6959999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="254.03674999999993" y="2316.468" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Admin Meminta Perbaikan ke Ketua Tim</text>
+</g>
+</svg>

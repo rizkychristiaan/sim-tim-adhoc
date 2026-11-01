@@ -1,0 +1,330 @@
+/**
+ * ==============================================================================
+ * STYLESHEET: style.css
+ * SISTEM: Lembar Evaluasi Prototype Figma (Iterasi I)
+ * TEMA: Maroon UKDW (#6b0c22) & A4 Print Layout
+ * ==============================================================================
+ */
+
+@page {
+    size: A4 portrait;
+    margin: 12mm 14mm 12mm 14mm;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    margin: 0;
+    padding: 20px;
+    font-size: 9pt;
+    line-height: 1.35;
+}
+
+/* Control Bar (Tidak ikut tercetak) */
+.control-bar {
+    max-width: 210mm;
+    margin: 0 auto 16px auto;
+    background: #ffffff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 8.5pt;
+}
+
+.filter-select {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 8.5pt;
+    font-weight: 500;
+    outline: none;
+    background-color: #f8fafc;
+}
+
+.btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 8.5pt;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: #6b0c22;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #83102b;
+}
+
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e1;
+}
+
+/* Container Kertas A4 */
+.container {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 24px 28px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-radius: 8px;
+}
+
+/* Header / Kop Form */
+.header {
+    border-bottom: 2.5px solid #6b0c22;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.header h3 {
+    margin: 0;
+    font-size: 12pt;
+    color: #6b0c22;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.header h4 {
+    margin: 2px 0 0 0;
+    font-size: 10pt;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.header p {
+    margin: 2px 0 0 0;
+    font-size: 8pt;
+    color: #475569;
+}
+
+/* Judul Dokumen */
+.title-box {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.title-box h4 {
+    margin: 0;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #0f172a;
+    text-decoration: underline;
+}
+
+.title-box small {
+    color: #64748b;
+    font-size: 7.8pt;
+}
+
+/* Data Responden Box */
+.meta-box {
+    background: #fdf2f4;
+    border: 1px solid #fecdd3;
+    border-radius: 6px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+}
+
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 20px;
+    font-size: 8.5pt;
+}
+
+.meta-row {
+    display: flex;
+    align-items: center;
+}
+
+.meta-label {
+    width: 130px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.meta-value {
+    flex-grow: 1;
+    border-bottom: 1px dotted #94a3b8;
+    padding-bottom: 1px;
+    font-weight: 500;
+}
+
+/* Petunjuk Box */
+.instruction-box {
+    background: #eff6ff;
+    border-left: 3px solid #2563eb;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    font-size: 8pt;
+    color: #1e3a8a;
+}
+
+/* Section Title */
+h5.section-title {
+    margin: 12px 0 6px 0;
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #6b0c22;
+    border-left: 3px solid #6b0c22;
+    padding-left: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* Tabel Evaluasi */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    font-size: 8.5pt;
+}
+
+table th, table td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 7px;
+    vertical-align: top;
+}
+
+table th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
+    text-align: left;
+}
+
+.text-center { text-align: center; }
+
+/* Badges */
+.badge-role {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 7.5pt;
+    font-weight: 600;
+}
+
+.badge-admin { background: #fee2e2; color: #991b1b; }
+.badge-ketua { background: #fef3c7; color: #92400e; }
+.badge-anggota { background: #e0e7ff; color: #3730a3; }
+
+/* Checkbox Radios */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 7.5pt;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.checkbox-item input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Kolom Catatan */
+.notes-area {
+    border: 1px dashed #cbd5e1;
+    border-radius: 4px;
+    height: 44px;
+    background: #ffffff;
+    padding: 4px;
+    font-size: 8pt;
+    width: 100%;
+    resize: none;
+    outline: none;
+}
+
+.notes-area:focus {
+    border-color: #6b0c22;
+}
+
+/* Ringkasan Skor Otomatis */
+.score-summary-bar {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8.5pt;
+}
+
+.score-badge {
+    background: #6b0c22;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Tanda Tangan */
+.signature-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    font-size: 8.5pt;
+}
+
+.signature-col {
+    text-align: center;
+    width: 210px;
+}
+
+/* Media Print */
+@media print {
+    body {
+        background: none;
+        padding: 0;
+    }
+    .container {
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    .no-print {
+        display: none !important;
+    }
+    .notes-area {
+        border-color: #94a3b8;
+    }
+}

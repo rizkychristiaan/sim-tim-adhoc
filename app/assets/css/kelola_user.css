@@ -1,0 +1,19 @@
+/**
+ * ==============================================================================
+ * FILE: app/assets/css/kelola_user.css
+ * HALAMAN: Kelola Pengguna Sistem LPAIP UKDW
+ * ==============================================================================
+ */
+
+/* Khusus saat diakses dari Dashboard (Mode Global tanpa sidebar kiri) */
+.main-content.no-sidebar {
+    margin-left: 0 !important;
+    width: 100% !important;
+    background-color: #f8fafc;
+    min-height: 100vh;
+}
+
+/* Penyesuaian container agar rapi dan lega */
+.container-fluid {
+    max-width: 1560px;
+}
